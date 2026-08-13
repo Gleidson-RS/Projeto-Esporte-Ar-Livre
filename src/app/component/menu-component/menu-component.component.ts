@@ -1,3 +1,4 @@
+import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,29 @@ import { Component } from '@angular/core';
   templateUrl: './menu-component.component.html',
   styleUrl: './menu-component.component.css'
 })
-export class MenuComponentComponent {
+export class MenuComponent {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  girada = false;
+
+  girarPagina() {
+    this.girada = !this.girada;
+  }
+  
 }

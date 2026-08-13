@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* ===========================
    PALETA DE CORES
 =========================== */
@@ -23,15 +24,18 @@
 =========================== */
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Roboto;
 }
 
 body{
     background:#f4f4f4;
     color:var(--text);
+    background-color: #000000;
+
 }
 
 /* ===========================
@@ -133,7 +137,7 @@ textarea:focus{
 
 button{
 
-    padding:14px 28px;
+    padding: 0px 0px;
 
     border:none;
 
@@ -150,12 +154,7 @@ button{
 
 /* Botão principal */
 
-.btn-primary{
 
-    background:var(--primary);
-
-    color:white;
-}
 
 .btn-primary:hover{
 

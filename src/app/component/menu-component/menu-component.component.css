@@ -1,0 +1,185 @@
+
+
+#cabecalho, #ul-menu, #logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ul-menu, #logo{
+    height: 100%;
+
+}
+
+
+#cabecalho{
+    width: 1000px;
+    height: 150px;
+    margin: 0px auto;
+    padding: 25px;
+    background-color: rgb(26, 26, 26);
+    justify-content: space-between;
+}
+
+#logo{
+    width: 30%;
+    font-size: 25px;
+    
+}
+
+#titulo-logo{
+    
+    color: var(--primary);
+    border: 1px solid var(--primary-hover);
+    margin: 0px 10px;
+    padding: 0px 10px;
+    
+}
+
+#menu{
+    width: 70%;
+}
+
+
+#ul-menu{
+    list-style: none;
+    justify-content: right;
+    gap: 20px;
+}
+
+.lik-menu{
+    text-decoration: none;
+    margin: 0px 10px;
+    transition: 0.5s ease;
+    font-size: 20px;
+
+    
+}
+
+.lnk-menu:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Botão no canto inferior esquerdo */
+
+#btn-girar{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 25px;
+    cursor: pointer;
+
+    transition: .4s;
+    z-index: 9999;
+}
+
+#btn-girar:hover{
+    background: var(--primary-hover);
+    transform: scale(5.1);
+}
+
+/* Página */
+
+body{
+    transition: transform 1s ease;
+    transform-origin: center center;
+}
+
+/* Quando estiver girada */
+
+body.girada{
+    transform: rotate(1turn);
+}
+
+#pagina{
+    min-height: 100px;
+    transition: transform 100s ease;
+    transform-origin: center center;
+}
+
+#pagina.girada{
+
+    transform: rotate(3600turn);
+}   
+
+
