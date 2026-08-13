@@ -1,1 +1,273 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===========================
+   PALETA DE CORES
+=========================== */
+
+:root{
+    --bg: #121212;
+    --surface: #1E1E1E;
+    --surface2: #2B2B2B;
+
+    --primary: #E53935;
+    --primary-hover: #C62828;
+
+    --text: #F5F5F5;
+    --text-secondary: #BDBDBD;
+
+    --border: #3A3A3A;
+
+    --shadow: rgba(0,0,0,.45);
+}
+
+/* ===========================
+   GERAL
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:var(--text);
+}
+
+/* ===========================
+   TÍTULOS
+=========================== */
+
+h1,h2,h3,h4{
+    color:#111;
+    text-align:center;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+    width:100%;
+    max-width:600px;
+
+    margin:auto;
+
+    background:var(--surface);
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 12px 30px var(--shadow);
+}
+
+/* ===========================
+   LABEL
+=========================== */
+
+label{
+    display:block;
+
+    margin:18px 0 8px;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface2);
+
+    color:var(--text);
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.25s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 8px rgba(229,57,53,.4);
+}
+
+/* Placeholder */
+
+::placeholder{
+    color:var(--text-secondary);
+}
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+button{
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+/* Botão principal */
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+}
+
+/* Botão secundário */
+
+.btn-secondary{
+
+    background:#333;
+
+    color:white;
+}
+
+.btn-secondary:hover{
+
+    background:#444;
+}
+
+/* ===========================
+   TABELAS
+=========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+    background:white;
+}
+
+th{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:12px;
+}
+
+td{
+
+    padding:12px;
+
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+
+    background:#f5f5f5;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+
+a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+}
+
+a:hover{
+
+    color:var(--primary-hover);
+}
+
+/* ===========================
+   UTILITÁRIOS
+=========================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:30px 0;
+}
+
+.text-center{
+
+    text-align:center;
+}
+
+.mt{
+
+    margin-top:20px;
+}
+
+.mb{
+
+    margin-bottom:20px;
+}
+
+.flex{
+
+    display:flex;
+
+    gap:15px;
+}
+
+.flex>*{
+
+    flex:1;
+}
