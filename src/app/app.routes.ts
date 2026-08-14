@@ -7,17 +7,17 @@ export const routes: Routes = [
 
     {
         path:"",
-        redirectTo: "/Home",
+        redirectTo: "Home",
         pathMatch: "full",
 
     },
 
     { 
-        path: "/Home",
+        path: "Home",
         component: HomeComponent },
 
     { 
-        path: "/Cadastro-Atleta",
+        path: "Cadastro-Atleta",
         component: AtletaComponent },
     
 
