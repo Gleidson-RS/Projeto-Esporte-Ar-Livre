@@ -29,14 +29,16 @@
     padding:0;
     box-sizing:border-box;
     font-family: Roboto;
-    background-image: url(/src/assets/meio-tom-hexagono-com-forma-abstrata_1409-1152.png);
+
 }
 
 body{
-    background:#f4f4f4;
+    background:#000000;
     color:var(--text);
-    background-color: #000000;
-
+    background-image: url("assets/backgound04.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 /* ===========================
@@ -190,14 +192,14 @@ table{
 
     margin-top:20px;
 
-    background:white;
+    background:rgb(0, 0, 0);
 }
 
 th{
 
     background:var(--primary);
 
-    color:white;
+    color:rgb(0, 0, 0);
 
     padding:12px;
 }
@@ -271,37 +273,3 @@ a:hover{
 
     flex:1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

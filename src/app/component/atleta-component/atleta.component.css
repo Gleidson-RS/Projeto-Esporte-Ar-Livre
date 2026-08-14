@@ -1,12 +1,16 @@
+
+
 #form{
-    width: 1000px;
+    width: 850px;
     min-height: 600px;
     margin: 20px auto;
     padding: 0px;
     color: var(--primary);
+    background-color: var(--bg);
 }
 
 h2{
+    padding: 25px;
     margin: 30px 0px;
     text-transform: uppercase;
     color: var(--primary);
@@ -15,6 +19,7 @@ h2{
 #form-atleta{
     width: 100%;
     min-height: 600px;
+    padding: 20px;
 }
 
 label{
@@ -29,7 +34,7 @@ input{
 }
 
 .input01{
-    width: 900px;
+    width: 600px;
 }
 
 .input02{

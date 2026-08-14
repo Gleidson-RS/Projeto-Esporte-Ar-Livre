@@ -10,6 +10,8 @@ export class AtletaService {
     //DEPLARAÇÃO DAS FUNÇÕES DE MANIPULAÇÃO DO ARRAY
     //ADICIONANDO ELEMENTO
     adicionarAtleta(atleta: Atleta){
+        //ARRRRRMMMMENNGUE PRA GERAR ID
+        atleta.id = this.atletas.length + 1
         this.atletas.push(atleta)
     }
 
