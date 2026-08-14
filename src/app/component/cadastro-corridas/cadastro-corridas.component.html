@@ -1,0 +1,31 @@
+<section id="form">
+    <h2> Cadastro de Atleta</h2>
+
+    <form id="form-atleta" (submit)="salvar()" >
+        
+        <label for="descricao"> descricao* </label>
+        <input type="text" name="descricao" id="descricao" class="input01" maxlength="60" placeholder="Digite seu descricao completo" [(ngModel)]="descricao">
+        
+        <label for="data"> Data* </label>
+        <input type="text" name="data" id="data" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="data">
+
+        <label for="distancia"> Distancias Disponiveis* </label>
+        
+        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
+        value="5"> 5km
+
+        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
+        value="10"> 10km
+
+        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
+        value="25"> 25km
+
+
+        <div id="div-btns">
+            <button exibirDados() type="submit" id="btnAdd"> Cadastro </button>
+            <button type="reset" id="btnLimpar"> Limpar </button>
+        </div>
+        
+    </form>
+
+</section>

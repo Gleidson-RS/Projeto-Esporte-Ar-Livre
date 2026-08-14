@@ -35,10 +35,7 @@
 body{
     background:#000000;
     color:var(--text);
-    background-image: url("assets/backgound04.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
 }
 
 /* ===========================
