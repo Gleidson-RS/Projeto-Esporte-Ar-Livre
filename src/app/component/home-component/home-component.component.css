@@ -1,0 +1,90 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+}
+
+#section-home {
+    background-color: var(--bg);
+    width: 1000px;
+    height: 650px;
+    margin: 20px auto;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 60px;
+
+    border: 2px solid var(--primary);
+
+    transition: transform 1s ease;
+    transform-origin: center center;
+}
+
+#titulo-esportes {
+    color: var(--primary);
+    margin: 0 35px;
+    letter-spacing: 5px;
+}
+
+#titulo-arlivre {
+    border: 2px solid var(--primary);
+    padding: 10px 25px;
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 1000px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#section-home.girada {
+    transform: rotate(3600turn);
+    transition: 300s;
+}
+
+#btn-girar {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 28px;
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#btn-girar:hover {
+    background: var(--primary-hover);
+    transform: scale(1.1);
+}

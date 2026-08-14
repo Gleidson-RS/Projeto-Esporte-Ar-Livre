@@ -26,11 +26,11 @@ export class MenuComponent {
 
 
 
-
+ 
   girada = false;
 
-  girarPagina() {
+  girar(): void {
     this.girada = !this.girada;
   }
-  
+
 }

@@ -1,7 +1,7 @@
 
-<header id="cabecalho">
+<header id="cabecalho" [class.girada]="girada">
     <div id="logo">
-        Esporte <span id="titulo-logo"> ArLivre </span>
+        Esporte <span (click)="girar()" id="titulo-logo"> ArLivre </span>
     </div>
 
     <nav id="menu">
