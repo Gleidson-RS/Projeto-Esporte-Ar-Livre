@@ -46,7 +46,7 @@ export class AtletaComponent {
 
 
 salvar(){
-
+  console.log('atleta.component.ts')
   const atleta = new Atleta()
   atleta.nome = this.nome
   atleta.cpf = this.cpf
@@ -62,6 +62,7 @@ salvar(){
   this.limparDados()
 
   this.atletaService.listarAtleta()
+
 
 }
 
