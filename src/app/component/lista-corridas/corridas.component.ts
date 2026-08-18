@@ -23,15 +23,27 @@ export class CorridasComponent implements OnInit {
 
   cadCorridas: CadCorrida[] = [];
 
-  constructor( private cadCorridaService: CadCorridaService ) {}
+  constructor(
+    private cadCorridaService: CadCorridaService
+  ) {}
 
   ngOnInit(): void {
 
     console.log('corridas.component.ts carregado');
 
-    this.cadCorridas = this.cadCorridaService.listarCorrida();
+    this.cadCorridaService.listarCorrida().subscribe({
+      next: (dados) => {
+        this.cadCorridas = dados;
 
-    console.table(this.cadCorridas);
+        console.table(this.cadCorridas);
+      },
+
+      error: (erro) => {
+        console.log('Erro ao carregar corridas:');
+        console.log(erro);
+      }
+    });
+
   }
 
 }

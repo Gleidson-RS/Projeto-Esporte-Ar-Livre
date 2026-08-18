@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Atleta } from '../../models/atleta';
 import { AtletaService } from '../../servive/atleta.service';
 
 @Component({
   selector: 'app-inscricoes',
   standalone: true,
-  imports: [
-    FormsModule
-  ],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule],
   templateUrl: './inscricoes.component.html',
   styleUrl: './inscricoes.component.css'
 })

@@ -46,12 +46,23 @@ salvar(){
     cadCorrida.distancia = this.distancia
 
 
-  this.cadCorridaService.adicionarCorrida(cadCorrida)
+    // ENVIA O ATLETA PARA A API
+    this.cadCorridaService.adicionarCorrida(cadCorrida).subscribe({
 
-  this.limparDados()
+      next: (dados) => {
+        console.log('Atleta cadastrado com sucesso!');
+        console.log(dados);
 
-  this.cadCorridaService.listarCorrida()
+        this.limparDados();
+      },
 
-}
+      error: (erro) => {
+        console.log('Erro ao cadastrar atleta:');
+        console.log(erro);
+      }
+
+    });
+
+  }
 
 }
