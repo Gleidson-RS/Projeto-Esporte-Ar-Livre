@@ -31,4 +31,16 @@ export class InscricoesComponent implements OnInit {
 
   }
 
+
+  
+  carregaDadosAtletaForm(){
+
+
+  }
+
+
+  excluir(){ 
+
+}
+
 }
