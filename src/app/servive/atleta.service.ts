@@ -10,11 +10,17 @@ export class AtletaService {
 
   constructor(private http: HttpClient) { }
 
-  listarAtleta(): Observable<Atleta[]> {
+  // Retorna a lista de TODOS os atletas (renomeado para o plural)
+  listarAtletas(): Observable<Atleta[]> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta`;
     return this.http.get<Atleta[]>(urlApi);
   }
 
+  // MÉTODO ADICIONADO: Busca apenas UM atleta pelo ID
+  listarAtleta(idAtleta: number): Observable<Atleta> {
+    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta/${idAtleta}`;
+    return this.http.get<Atleta>(urlApi);
+  }
 
   adicionarAtleta(atleta: Atleta): Observable<Atleta> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta`;

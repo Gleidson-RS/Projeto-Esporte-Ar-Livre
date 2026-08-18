@@ -7,8 +7,11 @@
           {{elem.id}} - {{ elem.nome }} - {{ elem.cpf }} - {{elem.cidade }} / {{ elem.uf }}
         </span>
         <span class="span-lnk-atletas">
-          <a class="lnk-atleta lnk-alterar" (click)="carregaDadosAtletaForm(atleta: elem)">A</a>
-          <a class="lnk-atleta lnk-excluir" (click)="excluir(elem.id)">E</a>
+
+          <a class="Cadastro-Atleta/id" (click)="carregaDadosAtletaForm(elem)">Alterar</a>
+
+          <a class="lnk-atleta lnk-excluir" (click)="excluir(elem.id)">Excluir</a>
+
         </span>
       </div>
     }@empty{
