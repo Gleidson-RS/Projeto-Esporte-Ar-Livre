@@ -31,6 +31,7 @@ export class MenuComponent {
 
   girar(): void {
     this.girada = !this.girada;
+    console.log('cuidado pra não virar o barco de teseu kkkkkkkkkk')
   }
 
 }

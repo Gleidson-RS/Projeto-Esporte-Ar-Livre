@@ -28,7 +28,7 @@ export class ListaAtletaComponent {
     this.listaService.listarAtletas()
     .subscribe({
       next: (dadosAtletas) => {
-        //this.listaAtletas = [...dadosAtletas].sort((a, b) => a.nome.localeCompare(b.nome))
+        
         this.listaAtletas.set([...dadosAtletas].sort((a, b) => a.nome.localeCompare(b.nome)));
       },
       error: (msgErro) => {
@@ -53,7 +53,7 @@ export class ListaAtletaComponent {
   }
   
   carregaDadosAtletaForm(atleta: Atleta) {
-    this.router.navigate(['/cadastroAtleta', atleta.id]);
+    this.router.navigate(['/Cadastro-Atleta', atleta.id]);
   }
   
  

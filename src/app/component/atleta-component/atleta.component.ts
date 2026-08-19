@@ -1,4 +1,4 @@
-import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } from '@angular/router';
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,11 +26,19 @@ export class AtletaComponent {
   cidade = '';
   uf = '';
 
-  constructor(private atletaService: AtletaService) { }
+  idAtleta = 0;
+
+  constructor(
+
+    private atletaService:AtletaService, 
+    private http: ActivatedRoute
+
+     ) { }
 
 
   // EXIBIR DADOS
   exibirDados() {
+    console.log(this.id);
     console.log(this.nome);
     console.log(this.cpf);
     console.log(this.sexo);
@@ -39,6 +47,14 @@ export class AtletaComponent {
     console.log(this.bairro);
     console.log(this.cidade);
     console.log(this.uf);
+  }
+
+  ngOnInit(){
+    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'))
+
+    if(this.idAtleta > 0){
+      this.carregaDados(this.idAtleta)
+    }
   }
 
 
@@ -55,6 +71,25 @@ export class AtletaComponent {
     this.uf = '';
   }
 
+  carregaDados(idAtleta: number){
+    this.atletaService.listarAtleta(idAtleta).subscribe({
+      next:(dadosAtleta) => {
+
+        this.nome = dadosAtleta.nome
+        this.cpf = dadosAtleta.cpf
+        this.sexo = dadosAtleta.sexo
+        this.cep = dadosAtleta.cep
+        this.ruaLogradouro = dadosAtleta.ruaLogradouro
+        this.bairro = dadosAtleta.bairro
+        this.cidade = dadosAtleta.cidade
+        this.uf = dadosAtleta.uf
+
+      },
+      error:(msgErro)=>{
+        console.log( 'ERRO AO LISTAR ATLETA ', msgErro)
+      }
+     })
+  }
 
   // SALVAR ATLETA
   salvar() {
@@ -87,6 +122,7 @@ export class AtletaComponent {
       error: (erro) => {
         console.log('Erro ao cadastrar atleta:');
         console.log(erro);
+        console.log('cuidado pra não virar o barco de teseu kkkkkkkkkk')
       }
 
     });

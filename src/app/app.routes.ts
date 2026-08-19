@@ -26,8 +26,8 @@ export const routes: Routes = [
         component: AtletaComponent },
         
     { 
-        path: "Cadastro-Atleta/id",
-        component: CadastroCorridasComponent },
+        path: "Cadastro-Atleta/:id",
+        component: AtletaComponent },
         
     { 
         path: "Cadastro-Corrida",
