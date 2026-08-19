@@ -1,6 +1,6 @@
 <section id="form">
 
-    <h2>Cadastro de Atleta</h2>
+    <h2> {{!editar ? 'Cadastrar' : 'Alterar'}} Atleta</h2>
 
     <form id="form-atleta" (ngSubmit)="salvar()">
 
@@ -138,20 +138,9 @@
 
         <div id="div-btns">
 
-            <button
-                type="submit"
-                id="btnAdd"
-            >
-                Cadastro
-            </button>
+            <button routerLink="/Atletas" type="submit" id="btnAdd" > {{!editar ? 'Cadastrar' : 'Alterar'}} </button>
 
-            <button
-                type="reset"
-                id="btnLimpar"
-                (click)="limparDados()"
-            >
-                Limpar
-            </button>
+            <button type="reset" id="btnLimpar" (click)="limparDados()" >Limpar</button>
 
         </div>
 

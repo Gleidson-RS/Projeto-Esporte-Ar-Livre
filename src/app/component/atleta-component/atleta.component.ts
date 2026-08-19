@@ -27,13 +27,12 @@ export class AtletaComponent {
   uf = '';
 
   idAtleta = 0;
+  editar = false;
 
   constructor(
-
-    private atletaService:AtletaService, 
+    private atletaService: AtletaService,
     private http: ActivatedRoute
-
-     ) { }
+  ) { }
 
 
   // EXIBIR DADOS
@@ -49,11 +48,29 @@ export class AtletaComponent {
     console.log(this.uf);
   }
 
-  ngOnInit(){
-    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'))
 
-    if(this.idAtleta > 0){
-      this.carregaDados(this.idAtleta)
+  ngOnInit() {
+
+    // Pega o ID que vem pela URL
+    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'));
+
+    // Se existe um ID, significa que estamos editando
+    if (this.idAtleta > 0) {
+
+      // ERRO QUE ESTAVA AQUI:
+      // Você chamava carregaDados() DUAS VEZES.
+      //
+      // ANTES:
+      // this.carregaDados(this.idAtleta)
+      // this.editar = true
+      // this.carregaDados(this.idAtleta)
+      //
+      // Isso fazia duas requisições para buscar o mesmo atleta.
+
+      this.carregaDados(this.idAtleta);
+
+      // Ativa o modo de edição
+      this.editar = true;
     }
   }
 
@@ -71,33 +88,42 @@ export class AtletaComponent {
     this.uf = '';
   }
 
-  carregaDados(idAtleta: number){
-    this.atletaService.listarAtleta(idAtleta).subscribe({
-      next:(dadosAtleta) => {
 
-        this.nome = dadosAtleta.nome
-        this.cpf = dadosAtleta.cpf
-        this.sexo = dadosAtleta.sexo
-        this.cep = dadosAtleta.cep
-        this.ruaLogradouro = dadosAtleta.ruaLogradouro
-        this.bairro = dadosAtleta.bairro
-        this.cidade = dadosAtleta.cidade
-        this.uf = dadosAtleta.uf
+  // CARREGAR DADOS DO ATLETA
+  carregaDados(idAtleta: number) {
+
+    this.atletaService.listarAtleta(idAtleta).subscribe({
+
+      next: (dadosAtleta) => {
+
+        this.nome = dadosAtleta.nome;
+        this.cpf = dadosAtleta.cpf;
+        this.sexo = dadosAtleta.sexo;
+        this.cep = dadosAtleta.cep;
+        this.ruaLogradouro = dadosAtleta.ruaLogradouro;
+        this.bairro = dadosAtleta.bairro;
+        this.cidade = dadosAtleta.cidade;
+        this.uf = dadosAtleta.uf;
 
       },
-      error:(msgErro)=>{
-        console.log( 'ERRO AO LISTAR ATLETA ', msgErro)
+
+      error: (msgErro) => {
+        console.log('ERRO AO LISTAR ATLETA ', msgErro);
       }
-     })
+
+    });
   }
+
 
   // SALVAR ATLETA
   salvar() {
 
     console.log('atleta.component.ts');
 
+    // Cria um objeto Atleta
     const atleta = new Atleta();
 
+    // Coloca os valores dos inputs dentro do objeto
     atleta.id = this.id;
     atleta.nome = this.nome;
     atleta.cpf = this.cpf;
@@ -109,24 +135,95 @@ export class AtletaComponent {
     atleta.uf = this.uf;
 
 
-    // ENVIA O ATLETA PARA A API
-    this.atletaService.adicionarAtleta(atleta).subscribe({
+    // ==========================================
+    // MODO EDIÇÃO
+    // ==========================================
 
-      next: (dados) => {
-        console.log('Atleta cadastrado com sucesso!');
-        console.log(dados);
+    if (this.editar) {
 
-        this.limparDados();
-      },
+      // Quando estamos editando, usamos o ID
+      // que veio pela URL.
+      atleta.id = this.idAtleta;
 
-      error: (erro) => {
-        console.log('Erro ao cadastrar atleta:');
-        console.log(erro);
-        console.log('cuidado pra não virar o barco de teseu kkkkkkkkkk')
-      }
+      // ALTERA o atleta existente.
+      this.atletaService.alterarAtleta(atleta).subscribe({
 
-    });
+        next: (resposta) => {
+          console.log('Atleta alterado com sucesso!');
+          console.log(resposta);
+        },
 
+        error: (msgErro) => {
+          console.log('Erro ao alterar atleta:');
+          console.log(msgErro);
+        }
+
+      });
+
+
+    // ==========================================
+    // MODO CADASTRO
+    // ==========================================
+
+    } else {
+
+      // Aqui é onde cadastramos um NOVO atleta.
+      this.atletaService.adicionarAtleta(atleta).subscribe({
+
+        next: (resposta) => {
+          console.log('Atleta cadastrado com sucesso!');
+          this.limparDados()
+          console.log(resposta);
+
+          // Limpa os campos depois do cadastro
+          this.limparDados();
+        },
+
+        error: (msgErro) => {
+          console.log('Erro ao cadastrar atleta:');
+          console.log(msgErro);
+        }
+
+      });
+    }
+
+
+    /*
+    =====================================================
+    ERRO QUE VOCÊ TINHA AQUI
+    =====================================================
+
+    Você tinha OUTRO adicionarAtleta() depois do if/else:
+
+        this.atletaService.adicionarAtleta(atleta).subscribe({
+            ...
+        });
+
+    O problema é que o atleta já tinha sido cadastrado
+    dentro do "else".
+
+    Então acontecia:
+
+        adicionarAtleta()
+             ↓
+        POST para API
+             ↓
+        atleta criado
+
+        adicionarAtleta()
+             ↓
+        POST para API NOVAMENTE
+             ↓
+        outro atleta criado
+
+    Resultado:
+
+        Atleta 1
+        Atleta 1  <-- duplicado
+
+    Por isso esse segundo adicionarAtleta() foi removido.
+    =====================================================
+    */
   }
 
 }
