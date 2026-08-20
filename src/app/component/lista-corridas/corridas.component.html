@@ -1,22 +1,74 @@
 <section id="section-lista-Corrida">
-    <h2>Lista Corridas</h2>
-  
-    @for(elem of listaCorrida(); track elem.descricao) {
-      <div class="corrida-item">
-        <span class="span-dados-corrida">
-          {{elem.id}} - {{ elem.descricao }} - {{ elem.data }} - {{elem.distancia }}
-        </span>
-        <span class="span-lnk-Corridas">
 
-          <button><a class="Cadastro-Corrida/:id" (click)="carregaDadosCorridaForm(elem)">Alterar</a></button>
+  <h2>Lista Corridas</h2>
 
-          <button><a class="lnk-corrida lnk-excluir" (click)="excluir(elem.id)">Excluir</a></button>
+  <div class="lista-corridas">
 
-        </span>
-      </div>
-    }@empty{
-      <div class="div-item-corrida">
-        NENHUM REGISTRO NA LISTA
-      </div>
-    }
-  </section>
+      @for(elem of listaCorrida(); track elem.descricao) {
+
+          <div class="corrida-card">
+
+              <div class="corrida-header">
+                  <h3>{{ elem.descricao }}</h3>
+              </div>
+
+              <div class="corrida-dados">
+
+                  <p>
+                      <strong>ID da corrida:</strong>
+                      {{ elem.id }}
+                  </p>
+
+                  <p>
+                      <strong>Descrição:</strong>
+                      {{ elem.descricao }}
+                  </p>
+
+                  <p>
+                      <strong>Data da corrida:</strong>
+                      {{ elem.data }}
+                  </p>
+
+                  <p>
+                      <strong>Distâncias disponíveis:</strong>
+                  </p>
+
+                  <ul>
+                      <li>{{ elem.distancia5 }}km</li>
+                      <li>{{ elem.distancia10 }}km</li>
+                      <li>{{ elem.distancia25 }}km</li>
+                  </ul>
+
+              </div>
+
+              <div class="corrida-acoes">
+
+                  <button
+                      type="button"
+                      class="btn-alterar"
+                      (click)="carregaDadosCorridaForm(elem)">
+                      Alterar
+                  </button>
+
+                  <button
+                      type="button"
+                      class="btn-excluir"
+                      (click)="excluir(elem.id)">
+                      Excluir
+                  </button>
+
+              </div>
+
+          </div>
+
+      } @empty {
+
+          <div class="div-item-corrida">
+              NENHUM REGISTRO NA LISTA
+          </div>
+
+      }
+
+  </div>
+
+</section>

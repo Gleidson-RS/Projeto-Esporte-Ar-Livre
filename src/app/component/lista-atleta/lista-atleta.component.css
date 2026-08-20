@@ -1,11 +1,119 @@
-a{
-
-    margin: 10px;
-    
+#section-lista-Atleta {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
 }
 
-button{
+/* TÍTULO DA PÁGINA */
+#section-lista-Atleta h2 {
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 35px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+}
 
-    background-color: black;
-    color: black;
+/* ÁREA DOS CARDS / ITENS DE ATLETAS */
+#section-lista-Atleta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* CARD DO ATLETA */
+.atleta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 12px 30px var(--shadow);
+    transition: .25s;
+}
+
+.atleta-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 35px var(--shadow);
+}
+
+/* DADOS DO ATLETA */
+.span-dados-atleta {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Destacando os rótulos ou valores se necessário */
+.span-dados-atleta strong {
+    color: var(--text);
+}
+
+/* ÁREA DOS BOTÕES DE AÇÃO */
+.span-lnk-atletas {
+    display: flex;
+    gap: 10px;
+}
+
+/* BOTÕES / LINKS */
+.span-lnk-atletas button {
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.span-lnk-atletas button a {
+    display: inline-block;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: .25s;
+}
+
+/* BOTÃO ALTERAR */
+.span-lnk-atletas button:nth-child(1) a {
+    background: var(--surface2);
+    color: var(--text);
+}
+
+.span-lnk-atletas button:nth-child(1) a:hover {
+    background: #444;
+    transform: translateY(-2px);
+}
+
+/* BOTÃO EXCLUIR */
+.span-lnk-atletas button:nth-child(2) a {
+    background: var(--primary);
+    color: var(--text);
+}
+
+.span-lnk-atletas button:nth-child(2) a:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* QUANDO NÃO HÁ ATLETAS */
+.div-item-pessoa {
+    width: 100%;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 12px 30px var(--shadow);
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
 }

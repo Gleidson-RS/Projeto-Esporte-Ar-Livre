@@ -11,14 +11,18 @@
 
         <label for="distancia"> Distancias Disponiveis* </label>
         
-        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
-        value="5"> 5km
+        <label>Distâncias Disponíveis*</label>
 
-        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
-        value="10"> 10km
-
-        <input type="radio" name="distancia" id="distancia" class="radio01" required [(ngModel)]="distancia"
-        value="25"> 25km
+        <input type="checkbox" name="distancia5" id="distancia5" [(ngModel)]="distancia5">
+        <label for="distancia5">5 km</label>
+        
+        
+        <input type="checkbox" name="distancia10" id="distancia10" [(ngModel)]="distancia10">
+        <label for="distancia10">10 km</label>
+        
+        
+        <input type="checkbox" name="distancia25" id="distancia25" [(ngModel)]="distancia25">
+        <label for="distancia25">25 km</label>
 
 
         <div id="div-btns">

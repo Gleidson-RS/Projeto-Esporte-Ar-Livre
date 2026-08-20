@@ -4,7 +4,11 @@
     @for(elem of listaAtletas(); track elem.id) {
       <div class="atleta-item">
         <span class="span-dados-atleta">
-          {{elem.id}} - {{ elem.nome }} - {{ elem.cpf }} - {{elem.cidade }} / {{ elem.uf }}
+        ID do Usuario:  {{elem.id}}<br>
+        Nome do Usuario:  {{ elem.nome }}<br>
+        CPF:  {{ elem.cpf }}<br>
+        Cidade:  {{elem.cidade }}<br>
+        Estado:  {{ elem.uf }}<br>
         </span>
         <span class="span-lnk-atletas">
 

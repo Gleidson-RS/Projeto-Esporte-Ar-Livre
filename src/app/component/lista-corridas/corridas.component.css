@@ -1,11 +1,140 @@
-a{
-
-    margin: 10px;
-    
+#section-lista-Corrida {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
 }
 
-button{
+/* TÍTULO DA PÁGINA */
+#section-lista-Corrida h2 {
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 35px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+}
 
-    background-color: black;
-    color: black;
+/* ÁREA DOS CARDS */
+.lista-corridas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+}
+
+/* CARD DA CORRIDA */
+.corrida-card {
+    width: 280px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+
+    box-shadow: 0 12px 30px var(--shadow);
+
+    transition: .25s;
+}
+
+.corrida-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px var(--shadow);
+}
+
+/* CABEÇALHO DO CARD */
+.corrida-header {
+    padding: 18px 15px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.corrida-header h3 {
+    margin: 0;
+    color: var(--text);
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+/* DADOS */
+.corrida-dados {
+    padding: 15px;
+}
+
+.corrida-dados p {
+    margin: 0;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--border);
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.corrida-dados strong {
+    color: var(--text);
+}
+
+.corrida-dados ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.corrida-dados li {
+    padding: 3px 0;
+}
+
+/* BOTÕES */
+.corrida-acoes {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+}
+
+.corrida-acoes button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: .25s;
+}
+
+/* ALTERAR */
+.btn-alterar {
+    background: var(--surface2);
+    color: var(--text);
+}
+
+.btn-alterar:hover {
+    background: #444;
+    transform: translateY(-2px);
+}
+
+/* EXCLUIR */
+.btn-excluir {
+    background: var(--primary);
+    color: var(--text);
+}
+
+.btn-excluir:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* QUANDO NÃO HÁ CORRIDAS */
+.div-item-corrida {
+    width: 100%;
+    padding: 30px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    box-shadow: 0 12px 30px var(--shadow);
+
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
 }

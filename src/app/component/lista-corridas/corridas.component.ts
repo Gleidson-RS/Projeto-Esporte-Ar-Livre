@@ -66,7 +66,7 @@ export class CorridasComponent implements OnInit {
   }
   
   carregaDadosCorridaForm(cadCorrida: CadCorrida) {
-    this.router.navigate(['/Cadastro-Corrida/:id', cadCorrida.id]);
+    this.router.navigate(['/Cadastro-Corrida/', cadCorrida.id]);
   }
   
  

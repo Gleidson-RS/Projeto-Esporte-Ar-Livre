@@ -1,7 +1,9 @@
-export class CadCorrida{
-    id: number = 0
-    descricao: string = ''
-    data: string = ''
-    distancia: number = 0
+export class CadCorrida {
+  id = 0;
+  descricao = '';
+  data = '';
 
+  distancia5 = 5;
+  distancia10 = 10;
+  distancia25 = 25;
 }
