@@ -1,3 +1,11 @@
-<app-menu-component></app-menu-component>
+<div class="tela" [class.girada]="girada">
 
-<router-outlet></router-outlet>
+    <app-menu-component
+        (girarTela)="girar()">
+    </app-menu-component>
+
+    <router-outlet></router-outlet>
+
+</div>
+
+<button id="btn-girar" (click)="girar()"></button>

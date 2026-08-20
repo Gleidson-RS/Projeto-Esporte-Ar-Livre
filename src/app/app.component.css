@@ -1,0 +1,32 @@
+.tela {
+    width: 100%;
+    min-height: 100vh;
+    transform-origin: center center;
+    transition: transform 1000s ease;
+}
+
+.tela.girada {
+    transform: rotate(8000turn);
+}
+
+#btn-girar {
+    position: fixed;
+    bottom: 20px;
+    top: 7%;
+    left: 40%;
+    width: 20px;
+    height: 20px;
+    border:outset;
+    border-radius: 50%;
+    border-color: red;
+    background: var(--bg);
+    font-size: 28px;
+    cursor: pointer;
+    transition: .3s;
+    z-index: 9999;
+}
+
+#btn-girar:hover {
+    background: var(--primary-hover);
+    transform: scale(1.1);
+}

@@ -1,5 +1,5 @@
-import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-menu-component',
@@ -10,29 +10,6 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  girada = false;
-
-  girar(): void {
-    this.girada = !this.girada;
-    console.log('cuidado pra não virar o barco de teseu kkkkkkkkkk')
-  }
+  @Output() girarTela = new EventEmitter<void>();
 
 }
- 

@@ -1,28 +1,16 @@
-
-<header id="cabecalho" [class.girada]="girada">
+<header id="cabecalho">
     <div id="logo">
-        Esporte <span (click)="girar()" id="titulo-logo"> ArLivre </span>
+        Esporte <span (click)="girarTela.emit()" id="titulo-logo"> ArLivre </span>
     </div>
 
     <nav id="menu">
         <ul id="ul-menu">
-
-            <li><a routerLink="/Home" class="lnk-menu"> Home </a></li>
-            <li><a routerLink="/Cadastro-Atleta" class="lnk-menu"> Cadastro Atleta </a></li>
-            <li><a routerLink="/Cadastro-Corrida" class="lnk-menu"> Cadastro Corridas </a></li>
-            <li><a routerLink="/Corridas" class="lnk-menu"> Corridas </a></li>
-            <li><a routerLink="/Atletas" class="lnk-menu"> Atletas </a></li>
-            <li><a routerLink="/Inscrição" class="lnk-menu"> Fazer Inscrição </a></li>
-
-
+            <li><a routerLink="/Home" class="lnk-menu">Home</a></li>
+            <li><a routerLink="/Cadastro-Atleta" class="lnk-menu">Cadastro Atleta</a></li>
+            <li><a routerLink="/Cadastro-Corrida" class="lnk-menu">Cadastro Corridas</a></li>
+            <li><a routerLink="/Corridas" class="lnk-menu">Corridas</a></li>
+            <li><a routerLink="/Atletas" class="lnk-menu">Atletas</a></li>
+            <li><a routerLink="/Inscrição" class="lnk-menu">Fazer Inscrição</a></li>
         </ul>
     </nav>
-
 </header>
-
-
-
-
-
-
-        
