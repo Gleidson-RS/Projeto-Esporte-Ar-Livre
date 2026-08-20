@@ -3,7 +3,7 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } fr
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AtletaService } from '../../servive/atleta.service';
+import { AtletaService } from '../../services/Atleta-service/atleta.service';
 import { Atleta } from '../../models/atleta';
 
 @Component({

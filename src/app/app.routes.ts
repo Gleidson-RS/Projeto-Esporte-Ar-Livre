@@ -7,6 +7,7 @@ import { HomeComponent } from './component/home-component/home-component.compone
 import { CadastroCorridasComponent } from './component/cadastro-corridas/cadastro-corridas.component';
 import { CorridasComponent } from './component/lista-corridas/corridas.component';
 import { ListaAtletaComponent } from './component/lista-atleta/lista-atleta.component';
+import { InscricaoCorridaComponent } from './component/inscricao-corrida/inscricao-corrida.component';
 
 export const routes: Routes = [
 
@@ -45,5 +46,9 @@ export const routes: Routes = [
     { 
          path: "Atletas",
         component: ListaAtletaComponent },
+
+    { 
+        path: "Inscrição",
+        component: InscricaoCorridaComponent },
 
 ];

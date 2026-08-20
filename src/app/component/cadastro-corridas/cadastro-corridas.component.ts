@@ -9,7 +9,7 @@ import {
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CadCorridaService } from '../../servive/cad-corrida.service';
+import { CadCorridaService } from '../../services/Corrida-service/cad-corrida.service';
 import { CadCorrida } from '../../models/cadastro-corridas';
 
 @Component({

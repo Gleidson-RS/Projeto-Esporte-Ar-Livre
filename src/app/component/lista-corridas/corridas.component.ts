@@ -4,10 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Atleta } from '../../models/atleta';
-import { AtletaService } from '../../servive/atleta.service';
-
+import { AtletaService } from '../../services/Atleta-service/atleta.service';
 import { CadCorrida } from '../../models/cadastro-corridas';
-import { CadCorridaService } from '../../servive/cad-corrida.service';
+import { CadCorridaService } from '../../services/Corrida-service/cad-corrida.service';
 
 import { CadastroCorridasComponent } from '../cadastro-corridas/cadastro-corridas.component';
 import { AtletaComponent } from '../atleta-component/atleta.component';

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Atleta } from '../../models/atleta';
-import { AtletaService } from '../../servive/atleta.service';
+import { AtletaService } from '../../services/Atleta-service/atleta.service';
 import { Router } from '@angular/router';
 import { signal } from '@angular/core';
 
