@@ -1,7 +1,7 @@
 <section id="form">
-    <h2> Cadastro de Atleta</h2>
+    <h2> Cadastro de Corrida</h2>
 
-    <form id="form-atleta" (submit)="salvar()" >
+    <form id="form-corrida" (ngSubmit)="salvar()">
         
         <label for="descricao"> descricao* </label>
         <input type="text" name="descricao" id="descricao" class="input01" maxlength="60" placeholder="Digite seu descricao completo" [(ngModel)]="descricao">
@@ -22,8 +22,9 @@
 
 
         <div id="div-btns">
-            <button exibirDados() type="submit" id="btnAdd"> Cadastro </button>
-            <button type="reset" id="btnLimpar"> Limpar </button>
+            <button type="submit" id="btnAdd"> {{!editar ? 'Cadastrar' : 'Alterar'}} </button>
+
+            <button type="reset" id="btnLimpar" (click)="limparDados()" >Limpar</button>
         </div>
         
     </form>

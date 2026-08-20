@@ -10,25 +10,31 @@ export class CadCorridaService {
 
   constructor(private http: HttpClient) { }
 
-  listarCorrida(): Observable<CadCorrida[]> {
+  // Retorna a lista de TODAS as corridas (renomeado para o plural)
+  listarCorridas(): Observable<CadCorrida[]> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida`;
     return this.http.get<CadCorrida[]>(urlApi);
   }
 
+  // MÉTODO ADICIONADO: Busca apenas UMA corrida pelo ID
+  listarCorrida(idCadCorrida: number): Observable<CadCorrida> {
+    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${idCadCorrida}`;
+    return this.http.get<CadCorrida>(urlApi);
+  }
 
   adicionarCorrida(cadCorrida: CadCorrida): Observable<CadCorrida> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida`;
     return this.http.post<CadCorrida>(urlApi, cadCorrida);
   }
-/*
-  excluirAtleta(idAtleta: number): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta/${idAtleta}`;
+
+  excluirCorrida(idCadCorrida: number): Observable<CadCorrida> {
+    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${idCadCorrida}`;
     return this.http.delete<CadCorrida>(urlApi);
   }
 
-  alterarAtleta(atleta: CadCorrida): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta/${atleta.id}`;
-    return this.http.put<CadCorrida>(urlApi, atleta);
+  alterarCorrida(cadCorrida: CadCorrida): Observable<CadCorrida> {
+    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${cadCorrida.id}`;
+    return this.http.put<CadCorrida>(urlApi, cadCorrida);
   }
-*/
+
 }

@@ -33,6 +33,9 @@ export const routes: Routes = [
         path: "Cadastro-Corrida",
         component: CadastroCorridasComponent },
 
+    { 
+        path: "Cadastro-Corrida/:id",
+        component: CadastroCorridasComponent },
         
     { 
         path: "Corridas",

@@ -1,4 +1,4 @@
-import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { CadCorridaService } from '../../servive/cad-corrida.service';
 import { CadastroCorridasComponent } from '../cadastro-corridas/cadastro-corridas.component';
 import { AtletaComponent } from '../atleta-component/atleta.component';
 
+import { signal } from '@angular/core';
+
 @Component({
   selector: 'app-corridas',
   standalone: true,
@@ -20,30 +22,53 @@ import { AtletaComponent } from '../atleta-component/atleta.component';
   styleUrl: './corridas.component.css'
 })
 export class CorridasComponent implements OnInit {
-
-  cadCorridas: CadCorrida[] = [];
-
+  
+  
+  //listaAtletas: Atleta[] = []
+  listaCorrida = signal<CadCorrida[]>([]);
+  
   constructor(
-    private cadCorridaService: CadCorridaService
-  ) {}
-
-  ngOnInit(): void {
-
-    console.log('corridas.component.ts carregado');
-
-    this.cadCorridaService.listarCorrida().subscribe({
-      next: (dados) => {
-        this.cadCorridas = dados;
-
-        console.table(this.cadCorridas);
+    private listaService: CadCorridaService, 
+    private router: Router
+    ) { }
+  
+  
+  ngOnInit() {
+    this.listarCorridas();
+  }
+  
+  listarCorridas() {
+    this.listaService.listarCorridas()
+    .subscribe({
+      next: (dadosCorrida) => {
+        
+        this.listaCorrida.set([...dadosCorrida].sort((a, b) => a.descricao.localeCompare(b.descricao)));
       },
-
-      error: (erro) => {
-        console.log('Erro ao carregar corridas:');
-        console.log(erro);
+      error: (msgErro) => {
+        console.log("Erro ao listar Corrida ", msgErro);
       }
     });
-
   }
-
+  
+  excluir(id: number) {
+    if (confirm("Deseja Excluir a corrida?")) {
+      this.listaService.excluirCorrida(id)
+      .subscribe({
+        next: (resposta) => {
+          console.log("Excluído com Sucesso!!! ", resposta);
+          this.listarCorridas();
+        },
+        error: (msgErro) => {
+          console.log("Erro ao listar corridas ", msgErro);
+        }
+      });
+    }
+  }
+  
+  carregaDadosCorridaForm(cadCorrida: CadCorrida) {
+    this.router.navigate(['/Cadastro-Corrida/:id', cadCorrida.id]);
+  }
+  
+ 
 }
+

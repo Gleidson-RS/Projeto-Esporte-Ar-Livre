@@ -1,1 +1,22 @@
-<h3>Nada ainda</h3>
+<section id="section-lista-Corrida">
+    <h2>Lista Corridas</h2>
+  
+    @for(elem of listaCorrida(); track elem.descricao) {
+      <div class="corrida-item">
+        <span class="span-dados-corrida">
+          {{elem.id}} - {{ elem.descricao }} - {{ elem.data }} - {{elem.distancia }}
+        </span>
+        <span class="span-lnk-Corridas">
+
+          <button><a class="Cadastro-Corrida/:id" (click)="carregaDadosCorridaForm(elem)">Alterar</a></button>
+
+          <button><a class="lnk-corrida lnk-excluir" (click)="excluir(elem.id)">Excluir</a></button>
+
+        </span>
+      </div>
+    }@empty{
+      <div class="div-item-corrida">
+        NENHUM REGISTRO NA LISTA
+      </div>
+    }
+  </section>

@@ -9,7 +9,7 @@ import { Atleta } from '../../models/atleta';
 @Component({
   selector: 'app-atleta',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule,],
   templateUrl: './atleta.component.html',
   styleUrl: './atleta.component.css'
 })
@@ -31,7 +31,8 @@ export class AtletaComponent {
 
   constructor(
     private atletaService: AtletaService,
-    private http: ActivatedRoute
+    private http: ActivatedRoute,
+    private router: Router
   ) { }
 
 
@@ -151,6 +152,9 @@ export class AtletaComponent {
         next: (resposta) => {
           console.log('Atleta alterado com sucesso!');
           console.log(resposta);
+
+          this.router.navigate(['/Atletas']);
+
         },
 
         error: (msgErro) => {
