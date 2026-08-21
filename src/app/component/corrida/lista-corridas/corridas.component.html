@@ -2,78 +2,55 @@
 
   <h2>Lista Corridas</h2>
 
-  <div class="lista-corridas">
+    <div class="lista-corridas">
 
       @for(elem of listaCorrida(); track elem.descricao) {
 
-          <div class="corrida-card">
+        <div class="corrida-card">
 
-              <div class="corrida-header">
-                  <h3>{{ elem.descricao }}</h3>
-              </div>
+            <div class="corrida-header">  <h3> {{ elem.descricao }} </h3> </div>
 
-              <div class="corrida-dados">
+            <div class="corrida-dados">
 
-                  <p>
-                      <strong>ID da corrida:</strong>
-                      {{ elem.id }}
-                  </p>
+                <p> <strong>ID da corrida:</strong> {{ elem.id }} </p>
 
-                  <p>
-                      <strong>Descrição:</strong>
-                      {{ elem.descricao }}
-                  </p>
+                <p> <strong>Descrição:</strong> {{ elem.descricao }} </p>
 
-                  <p>
-                      <strong>Data da corrida:</strong>
-                      {{ elem.data }}
-                  </p>
+                <p> <strong>Data da corrida:</strong> {{ elem.data }} </p>
 
-                  <p>
-                      <strong>Distâncias disponíveis:</strong>
-                  </p>
+                <p> <strong>Distâncias disponíveis:</strong> </p>
 
-                  <ul>
-                      <li>{{ elem.distancia5 }}km</li>
-                      <li>{{ elem.distancia10 }}km</li>
-                      <li>{{ elem.distancia25 }}km</li>
-                  </ul>
+                <ul>     
+                    <li>{{ elem.distancia5 }}km</li>
 
-                  <p>
-                    <strong>Preço:</strong>
-                    {{ elem.preco }}
-                </p>
+                    <li>{{ elem.distancia10 }}km</li>
 
-              </div>
+                    <li>{{ elem.distancia25 }}km</li>
 
-              <div class="corrida-acoes">
+                </ul>
 
-                  <button
-                      type="button"
-                      class="btn-alterar"
-                      (click)="carregaDadosCorridaForm(elem)">
-                      Alterar
-                  </button>
+                <p>   <strong>Preço:</strong> {{ elem.preco }} </p>
 
-                  <button
-                      type="button"
-                      class="btn-excluir"
-                      (click)="excluir(elem.id)">
-                      Excluir
-                  </button>
+            </div>
 
-              </div>
+              <div class="corrida-acoes"> 
+                
+                <button type="button" class="btn-alterar" (click)="carregaDadosCorridaForm(elem)"> Alterar </button>
+                
+                <button type="button" class="btn-excluir" (click)="excluir(elem.id)"> Excluir </button>
 
-          </div>
+            </div>
 
-      } @empty {
+        </div>
 
-          <div class="div-item-corrida">
-              NENHUM REGISTRO NA LISTA
-          </div>
+        } @empty {
 
-      }
+        <div class="div-item-corrida">
+            NENHUM REGISTRO NA LISTA
+        </div>
 
-  </div>
+    }
+
+    </div>
 
 </section>

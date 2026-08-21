@@ -64,6 +64,6 @@ export class CorridasComponent implements OnInit {
     this.router.navigate(['/Cadastro-Corrida/', cadCorrida.id]);
   }
   
- 
+
 }
 
