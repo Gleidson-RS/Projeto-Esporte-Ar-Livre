@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { Atleta } from '../../models/atleta';
-import { AtletaService } from '../../services/Atleta-service/atleta.service';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { signal } from '@angular/core';
+
+import { Atleta } from '../../../models/atleta';
+import { AtletaService } from '../../../services/Atleta-service/atleta.service';
 
 @Component({
   selector: 'app-lista-atleta',

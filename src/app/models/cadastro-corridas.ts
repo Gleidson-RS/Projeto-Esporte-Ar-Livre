@@ -6,4 +6,6 @@ export class CadCorrida {
   distancia5 = 5;
   distancia10 = 10;
   distancia25 = 25;
+
+  preco = 0;
 }

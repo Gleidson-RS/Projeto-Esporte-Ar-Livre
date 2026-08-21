@@ -9,8 +9,8 @@ import {
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CadCorridaService } from '../../services/Corrida-service/cad-corrida.service';
-import { CadCorrida } from '../../models/cadastro-corridas';
+import { CadCorridaService } from '../../../services/Corrida-service/cad-corrida.service';
+import { CadCorrida } from '../../../models/cadastro-corridas';
 
 @Component({
   selector: 'app-cadastro-corridas',
@@ -38,6 +38,7 @@ export class CadastroCorridasComponent {
   distancia5 = false;
   distancia10 = false;
   distancia25 = false;
+  preco = 0;
 
   idCorrida = 0;
   editar = false;
@@ -63,6 +64,7 @@ export class CadastroCorridasComponent {
     console.log(this.id);
     console.log(this.descricao);
     console.log(this.data);
+    console.log(this.preco);
 
     console.log(
       '5 km:',
@@ -114,6 +116,8 @@ export class CadastroCorridasComponent {
 
     this.data = '';
 
+    this.preco;
+
     // Desmarca os checkboxes
     this.distancia5 = false;
     this.distancia10 = false;
@@ -138,6 +142,8 @@ export class CadastroCorridasComponent {
           this.descricao = dadosCorrida.descricao;
 
           this.data = dadosCorrida.data;
+
+          this.preco = dadosCorrida.preco;
 
           // Verifica quais distâncias foram cadastradas
           this.distancia5 =
@@ -182,6 +188,8 @@ export class CadastroCorridasComponent {
       descricao: this.descricao,
 
       data: this.data,
+
+      preco: this.preco,
 
       // Se estiver marcado, envia o valor.
       // Se não estiver, envia 0.

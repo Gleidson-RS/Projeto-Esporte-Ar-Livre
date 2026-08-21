@@ -1,13 +1,16 @@
 import { Routes, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { MenuComponent } from './component/menu-component/menu-component.component';
-
-import { AtletaComponent } from './component/atleta-component/atleta.component';
 import { HomeComponent } from './component/home-component/home-component.component';
-import { CadastroCorridasComponent } from './component/cadastro-corridas/cadastro-corridas.component';
-import { CorridasComponent } from './component/lista-corridas/corridas.component';
-import { ListaAtletaComponent } from './component/lista-atleta/lista-atleta.component';
+
+import { ListaAtletaComponent } from './component/atleta/lista-atleta/lista-atleta.component';
+import { AtletaComponent } from './component/atleta/atleta-component/atleta.component';
+
+import { CadastroCorridasComponent } from './component/corrida/cadastro-corridas/cadastro-corridas.component';
+import { CorridasComponent } from './component/corrida/lista-corridas/corridas.component';
+
 import { InscricaoCorridaComponent } from './component/inscricao-corrida/inscricao-corrida.component';
+
 
 export const routes: Routes = [
 

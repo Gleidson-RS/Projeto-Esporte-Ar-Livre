@@ -4,9 +4,9 @@ import { RouterOutlet } from '@angular/router';
 
 import { MenuComponent } from './component/menu-component/menu-component.component';
 
-import { AtletaComponent } from './component/atleta-component/atleta.component';
+import { AtletaComponent } from './component/atleta/atleta-component/atleta.component';
 
-import { ListaAtletaComponent } from './component/lista-atleta/lista-atleta.component';
+import { ListaAtletaComponent } from './component/atleta/lista-atleta/lista-atleta.component';
 
 @Component({
   selector: 'app-root',

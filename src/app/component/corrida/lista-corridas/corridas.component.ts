@@ -3,13 +3,9 @@ import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/rou
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { Atleta } from '../../models/atleta';
-import { AtletaService } from '../../services/Atleta-service/atleta.service';
-import { CadCorrida } from '../../models/cadastro-corridas';
-import { CadCorridaService } from '../../services/Corrida-service/cad-corrida.service';
+import { CadCorrida } from '../../../models/cadastro-corridas';
+import { CadCorridaService } from '../../../services/Corrida-service/cad-corrida.service';
 
-import { CadastroCorridasComponent } from '../cadastro-corridas/cadastro-corridas.component';
-import { AtletaComponent } from '../atleta-component/atleta.component';
 
 import { signal } from '@angular/core';
 
