@@ -62,6 +62,9 @@ export class InscricaoCorridaComponent implements OnInit {
     // Carrega os atletas inscritos
     this.carregarInscritos();
 
+    this.carregarCorridas();
+
+
   }
 
 
@@ -151,6 +154,19 @@ export class InscricaoCorridaComponent implements OnInit {
       });
 
   }
+
+  carregarCorridas(): void {
+    this.CadCorridaService.listarCorridas()
+      .subscribe({
+        next: (dados: CadCorrida[]) => {
+          this.listaCorridas = dados;
+        },
+        error: (erro: any) => {
+          console.error('Erro ao carregar corridas:', erro);
+        }
+      });
+  }
+  
 
 
   inscrever(): void {

@@ -1,3 +1,9 @@
+ul{
+
+color: aliceblue;
+
+}
+
 #section-lista-Atleta {
     width: 90%;
     max-width: 1100px;
@@ -64,10 +70,11 @@
 
 /* BOTÕES / LINKS */
 .span-lnk-atletas button {
-    padding: 0;
+    padding: 3px;
     border: none;
     border-radius: 8px;
     background: transparent;
+    background-color: red;
     cursor: pointer;
     overflow: hidden;
 }

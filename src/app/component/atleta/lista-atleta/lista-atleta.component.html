@@ -1,26 +1,54 @@
 <section id="section-lista-Atleta">
-    <h2>Lista Atletas</h2>
-  
-    @for(elem of listaAtletas(); track elem.id) {
-      <div class="atleta-item">
-        <span class="span-dados-atleta">
-        ID do Usuario:  {{elem.id}}<br>
-        Nome do Usuario:  {{ elem.nome }}<br>
-        CPF:  {{ elem.cpf }}<br>
-        Cidade:  {{elem.cidade }}<br>
-        Estado:  {{ elem.uf }}<br>
-        </span>
-        <span class="span-lnk-atletas">
 
-          <button><a class="Cadastro-Atleta/:id" (click)="carregaDadosAtletaForm(elem)">Alterar</a></button>
+  <h2>Lista Atletas</h2>
 
-          <button><a class="lnk-atleta lnk-excluir" (click)="excluir(elem.id)">Excluir</a></button>
+  @for (elem of listaAtletas(); track elem.id) {
 
-        </span>
-      </div>
-    }@empty{
-      <div class="div-item-pessoa">
-        NENHUM REGISTRO NA LISTA
-      </div>
-    }
-  </section>
+    <div class="atleta-item">
+
+      <span class="span-dados-atleta">
+
+        ID do Usuario: {{ elem.id }}<br>
+
+        <ul>
+          Nome do Usuario: {{ elem.nome }}
+        </ul>
+
+        CPF: {{ elem.cpf }}<br>
+
+        Cidade: {{ elem.cidade }}<br>
+
+        Estado: {{ elem.uf }}<br>
+
+        Idade: {{ calcularIdade(elem.dataNascimento) }} anos<br>
+
+      </span>
+
+      <span class="span-lnk-atletas">
+
+        <button
+          (click)="carregaDadosAtletaForm(elem)"
+        >
+          Alterar
+        </button>
+
+        <button
+          class="lnk-atleta lnk-excluir"
+          (click)="excluir(elem.id)"
+        >
+          Excluir
+        </button>
+
+      </span>
+
+    </div>
+
+  } @empty {
+
+    <div class="div-item-pessoa">
+      NENHUM REGISTRO NA LISTA
+    </div>
+
+  }
+
+</section>

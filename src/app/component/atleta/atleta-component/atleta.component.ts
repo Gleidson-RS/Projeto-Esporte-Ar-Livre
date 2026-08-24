@@ -18,6 +18,7 @@ export class AtletaComponent {
   // DECLARANDO ATRIBUTOS
   id = 0;
   nome = '';
+  dataNascimento: Date | null = null;
   cpf = 0;
   sexo = '';
   cep = 0;
@@ -40,6 +41,7 @@ export class AtletaComponent {
   exibirDados() {
     console.log(this.id);
     console.log(this.nome);
+    console.log(this.dataNascimento);
     console.log(this.cpf);
     console.log(this.sexo);
     console.log(this.cep);
@@ -80,6 +82,7 @@ export class AtletaComponent {
   limparDados() {
     this.id = 0;
     this.nome = '';
+    this.dataNascimento = null;
     this.cpf = 0;
     this.sexo = '';
     this.cep = 0;
@@ -98,6 +101,7 @@ export class AtletaComponent {
       next: (dadosAtleta) => {
 
         this.nome = dadosAtleta.nome;
+        this.dataNascimento = dadosAtleta.dataNascimento;
         this.cpf = dadosAtleta.cpf;
         this.sexo = dadosAtleta.sexo;
         this.cep = dadosAtleta.cep;
@@ -127,6 +131,7 @@ export class AtletaComponent {
     // Coloca os valores dos inputs dentro do objeto
     atleta.id = this.id;
     atleta.nome = this.nome;
+    atleta.dataNascimento = this.dataNascimento;
     atleta.cpf = this.cpf;
     atleta.sexo = this.sexo;
     atleta.cep = this.cep;
@@ -192,42 +197,6 @@ export class AtletaComponent {
     }
 
 
-    /*
-    =====================================================
-    ERRO QUE VOCÊ TINHA AQUI
-    =====================================================
-
-    Você tinha OUTRO adicionarAtleta() depois do if/else:
-
-        this.atletaService.adicionarAtleta(atleta).subscribe({
-            ...
-        });
-
-    O problema é que o atleta já tinha sido cadastrado
-    dentro do "else".
-
-    Então acontecia:
-
-        adicionarAtleta()
-             ↓
-        POST para API
-             ↓
-        atleta criado
-
-        adicionarAtleta()
-             ↓
-        POST para API NOVAMENTE
-             ↓
-        outro atleta criado
-
-    Resultado:
-
-        Atleta 1
-        Atleta 1  <-- duplicado
-
-    Por isso esse segundo adicionarAtleta() foi removido.
-    =====================================================
-    */
   }
 
 }

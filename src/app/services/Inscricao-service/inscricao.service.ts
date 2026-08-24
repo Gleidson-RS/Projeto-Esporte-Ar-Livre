@@ -17,7 +17,7 @@ export class InscricaoService {
   // Retorna a lista de TODAS as inscrições
   listarInscricoes(): Observable<Inscricao[]> {
 
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Inscricao`;
+    const urlApi = `https://6a8c714563f113bab0b84814.mockapi.io/inscritos`;
 
     return this.http.get<Inscricao[]>(urlApi);
 
@@ -28,7 +28,7 @@ export class InscricaoService {
   listarInscricao(idInscricao: number): Observable<Inscricao> {
 
     const urlApi =
-      `https://6a834612cb486d2434039215.mockapi.io/Inscricao/${idInscricao}`;
+      `https://6a8c714563f113bab0b84814.mockapi.io/inscritos${idInscricao}`;
 
     return this.http.get<Inscricao>(urlApi);
 
@@ -39,7 +39,7 @@ export class InscricaoService {
   adicionarInscricao(inscricao: Inscricao): Observable<Inscricao> {
 
     const urlApi =
-      `https://6a834612cb486d2434039215.mockapi.io/Inscricao`;
+      `https://6a8c714563f113bab0b84814.mockapi.io/inscritos`;
 
     return this.http.post<Inscricao>(urlApi, inscricao);
 
@@ -50,7 +50,7 @@ export class InscricaoService {
   excluirInscricao(idInscricao: number): Observable<Inscricao> {
 
     const urlApi =
-      `https://6a834612cb486d2434039215.mockapi.io/Inscricao/${idInscricao}`;
+      `https://6a8c714563f113bab0b84814.mockapi.io/inscritos${idInscricao}`;
 
     return this.http.delete<Inscricao>(urlApi);
 
@@ -61,7 +61,7 @@ export class InscricaoService {
   alterarInscricao(inscricao: Inscricao): Observable<Inscricao> {
 
     const urlApi =
-      `https://6a834612cb486d2434039215.mockapi.io/Inscricao/${inscricao.id}`;
+      `https://6a8c714563f113bab0b84814.mockapi.io/inscritos${inscricao.id}`;
 
     return this.http.put<Inscricao>(urlApi, inscricao);
 
