@@ -4,18 +4,20 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AtletaService } from '../../../services/Atleta-service/atleta.service';
-import { Atleta } from '../../../models/atleta';
 
 @Component({
   selector: 'app-atleta',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule,],
+  imports: [ RouterLink, RouterLinkActive, RouterOutlet, FormsModule],
   templateUrl: './atleta.component.html',
   styleUrl: './atleta.component.css'
 })
 export class AtletaComponent {
 
-  // DECLARANDO ATRIBUTOS
+  // ==========================================
+  // DADOS DO ATLETA
+  // ==========================================
+
   id = 0;
   nome = '';
   dataNascimento = '';
@@ -27,8 +29,13 @@ export class AtletaComponent {
   cidade = '';
   uf = '';
 
+  // ==========================================
+  // CONTROLE DA TELA
+  // ==========================================
+
   idAtleta = 0;
   editar = false;
+
 
   constructor(
     private atletaService: AtletaService,
@@ -37,8 +44,34 @@ export class AtletaComponent {
   ) { }
 
 
+  // ==========================================
+  // INICIALIZAÇÃO
+  // ==========================================
+
+  ngOnInit() {
+
+
+    this.idAtleta = Number(
+        this.http.snapshot.paramMap.get('id')
+      );
+
+    if (this.idAtleta > 0) {
+
+      this.editar = true;
+
+      this.carregaDados(
+        this.idAtleta
+      );
+    }
+  }
+
+
+  // ==========================================
   // EXIBIR DADOS
+  // ==========================================
+
   exibirDados() {
+
     console.log(this.id);
     console.log(this.nome);
     console.log(this.dataNascimento);
@@ -52,151 +85,154 @@ export class AtletaComponent {
   }
 
 
-  ngOnInit() {
+  // ==========================================
+  // CARREGAR DADOS
+  // ==========================================
 
-    // Pega o ID que vem pela URL
-    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'));
+  carregaDados(
+    idAtleta: number
+  ) {
 
-    // Se existe um ID, significa que estamos editando
-    if (this.idAtleta > 0) {
+    this.atletaService
+      .listarAtleta(idAtleta)
+      .subscribe({
+        next: (dadosAtleta) => {
 
-      // ERRO QUE ESTAVA AQUI:
-      // Você chamava carregaDados() DUAS VEZES.
-      //
-      // ANTES:
-      // this.carregaDados(this.idAtleta)
-      // this.editar = true
-      // this.carregaDados(this.idAtleta)
-      //
-      // Isso fazia duas requisições para buscar o mesmo atleta.
+          this.id = dadosAtleta.id;
+          this.nome = dadosAtleta.nome;
+          this.dataNascimento = dadosAtleta.dataNascimento;
+          this.cpf = dadosAtleta.cpf;
+          this.sexo = dadosAtleta.sexo;
+          this.cep = dadosAtleta.cep;
+          this.ruaLogradouro = dadosAtleta.ruaLogradouro;
+          this.bairro = dadosAtleta.bairro;
+          this.cidade = dadosAtleta.cidade;
+          this.uf = dadosAtleta.uf;
+        },
 
-      this.carregaDados(this.idAtleta);
+        error: (msgErro) => {
 
-      // Ativa o modo de edição
-      this.editar = true;
-    }
+          console.log(
+            'ERRO AO LISTAR ATLETA ',
+            msgErro
+          );
+        }
+      });
   }
 
 
-  // LIMPAR DADOS
-  limparDados() {
-    this.id = 0;
-    this.nome = '';
-    this.dataNascimento = '';
-    this.cpf = 0;
-    this.sexo = '';
-    this.cep = 0;
-    this.ruaLogradouro = '';
-    this.bairro = '';
-    this.cidade = '';
-    this.uf = '';
-  }
+  // ==========================================
+  // SALVAR
+  // ==========================================
 
-
-  // CARREGAR DADOS DO ATLETA
-  carregaDados(idAtleta: number) {
-
-    this.atletaService.listarAtleta(idAtleta).subscribe({
-
-      next: (dadosAtleta) => {
-
-        this.nome = dadosAtleta.nome;
-        this.dataNascimento = dadosAtleta.dataNascimento;
-        this.cpf = dadosAtleta.cpf;
-        this.sexo = dadosAtleta.sexo;
-        this.cep = dadosAtleta.cep;
-        this.ruaLogradouro = dadosAtleta.ruaLogradouro;
-        this.bairro = dadosAtleta.bairro;
-        this.cidade = dadosAtleta.cidade;
-        this.uf = dadosAtleta.uf;
-
-      },
-
-      error: (msgErro) => {
-        console.log('ERRO AO LISTAR ATLETA ', msgErro);
-      }
-
-    });
-  }
-
-
-  // SALVAR ATLETA
   salvar() {
 
-    console.log('atleta.component.ts');
+    // ==========================================
+    // CRIA O OBJETO ATLETA
+    // ==========================================
 
-    // Cria um objeto Atleta
-    const atleta = new Atleta();
-
-    // Coloca os valores dos inputs dentro do objeto
-    atleta.id = this.id;
-    atleta.nome = this.nome;
-    atleta.dataNascimento = this.dataNascimento;
-    atleta.cpf = this.cpf;
-    atleta.sexo = this.sexo;
-    atleta.cep = this.cep;
-    atleta.ruaLogradouro = this.ruaLogradouro;
-    atleta.bairro = this.bairro;
-    atleta.cidade = this.cidade;
-    atleta.uf = this.uf;
+    const atleta =
+      this.atletaService.criarAtleta(
+        this.id,
+        this.nome,
+        this.dataNascimento,
+        this.cpf,
+        this.sexo,
+        this.cep,
+        this.ruaLogradouro,
+        this.bairro,
+        this.cidade,
+        this.uf
+      );
 
 
     // ==========================================
-    // MODO EDIÇÃO
+    // EDIÇÃO
     // ==========================================
 
     if (this.editar) {
 
-      // Quando estamos editando, usamos o ID
-      // que veio pela URL.
+
       atleta.id = this.idAtleta;
 
-      // ALTERA o atleta existente.
-      this.atletaService.alterarAtleta(atleta).subscribe({
+      this.atletaService
+        .alterarAtleta(atleta)
+        .subscribe({
 
-        next: (resposta) => {
-          console.log('Atleta alterado com sucesso!');
-          console.log(resposta);
+          next: (resposta) => {
 
-          this.router.navigate(['/Atletas']);
+            console.log(
+              'Atleta alterado com sucesso!'
+            );
 
-        },
+            console.log(resposta);
 
-        error: (msgErro) => {
-          console.log('Erro ao alterar atleta:');
-          console.log(msgErro);
-        }
+            this.router.navigate([
+              '/Atletas'
+            ]);
+          },
 
-      });
+          error: (msgErro) => {
+
+            console.log(
+              'Erro ao alterar atleta:',
+              msgErro
+            );
+          }
+        });
+
+      return;
+    }
 
 
     // ==========================================
-    // MODO CADASTRO
+    // NOVO CADASTRO
     // ==========================================
 
-    } else {
-
-      // Aqui é onde cadastramos um NOVO atleta.
-      this.atletaService.adicionarAtleta(atleta).subscribe({
+    this.atletaService
+      .adicionarAtleta(atleta)
+      .subscribe({
 
         next: (resposta) => {
-          console.log('Atleta cadastrado com sucesso!');
-          this.limparDados()
+
+          console.log(
+            'Atleta cadastrado com sucesso!'
+          );
+
           console.log(resposta);
 
-          // Limpa os campos depois do cadastro
           this.limparDados();
         },
 
         error: (msgErro) => {
-          console.log('Erro ao cadastrar atleta:');
-          console.log(msgErro);
+
+          console.log(
+            'Erro ao cadastrar atleta:',
+            msgErro
+          );
         }
-
       });
-    }
-
-
   }
 
+
+  // ==========================================
+  // LIMPAR DADOS
+  // ==========================================
+
+  limparDados() {
+
+    const atleta =
+      this.atletaService.limparAtleta();
+
+    this.id = atleta.id;
+    this.nome = atleta.nome;
+    this.dataNascimento = atleta.dataNascimento;
+    this.cpf = atleta.cpf;
+    this.sexo = atleta.sexo;
+    this.cep = atleta.cep;
+    this.ruaLogradouro = atleta.ruaLogradouro;
+    this.bairro = atleta.bairro;
+    this.cidade = atleta.cidade;
+    this.uf = atleta.uf;
+  }
 }

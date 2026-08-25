@@ -37,14 +37,12 @@ export class InscricaoCorridaComponent implements OnInit {
   // ID da corrida
   idCorrida!: number;
 
-
   constructor(
     private route: ActivatedRoute,
     private atletaService: AtletaService,
     private CadCorridaService: CadCorridaService,
     private inscricaoService: InscricaoService
   ) {}
-
 
   ngOnInit(): void {
 
@@ -56,53 +54,50 @@ export class InscricaoCorridaComponent implements OnInit {
     // Carrega os dados da corrida
     this.carregarCorrida();
 
-    // Carrega todos os atletas
+    // Carrega todos os atletas.
+    // Quando terminar, carregarAtletas()
+    // vai buscar as inscrições.
     this.carregarAtletas();
 
-    // Carrega os atletas inscritos
-    this.carregarInscritos();
-
+    // Carrega a lista de corridas
     this.carregarCorridas();
-
-
   }
-
 
   carregarCorrida(): void {
 
-    this.CadCorridaService.listarCorrida(this.idCorrida)
+    this.CadCorridaService
+      .listarCorrida(this.idCorrida)
       .subscribe({
+
         next: (dados: CadCorrida) => {
-
           this.cadCorrida = dados;
-
         },
 
         error: (erro: any) => {
-
           console.error(
             'Erro ao carregar corrida:',
             erro
           );
-
         }
+
       });
-
   }
-
 
   carregarAtletas(): void {
 
-    this.atletaService.listarAtletas()
+    this.atletaService
+      .listarAtletas()
       .subscribe({
+
         next: (dados: Atleta[]) => {
 
+          // Guarda todos os atletas
           this.listaAtletas = dados;
 
-          // Depois que os atletas foram carregados,
-          // atualiza a lista de inscritos
+          // IMPORTANTE:
+          // Só procura os inscritos depois que
+          // os atletas já foram carregados.
           this.carregarInscritos();
-
         },
 
         error: (erro: any) => {
@@ -113,34 +108,61 @@ export class InscricaoCorridaComponent implements OnInit {
           );
 
         }
+
       });
-
   }
-
 
   carregarInscritos(): void {
 
-    this.inscricaoService.listarInscricoes()
+    this.inscricaoService
+      .listarInscricoes()
       .subscribe({
+
         next: (inscricoes: Inscricao[]) => {
 
-          // Pega somente as inscrições dessa corrida
-          const inscricoesCorrida = inscricoes.filter(
-            inscricao =>
-              inscricao.idCorrida === this.idCorrida
+          console.log(
+            'Todas as inscrições recebidas da API:',
+            inscricoes
           );
 
+          console.log(
+            'ID da corrida atual:',
+            this.idCorrida
+          );
 
-          // Procura os atletas correspondentes
+          // Filtra somente as inscrições
+          // pertencentes à corrida atual.
+          //
+          // Number() é usado porque a API pode
+          // retornar os IDs como string.
+          const inscricoesCorrida =
+            inscricoes.filter(
+              inscricao =>
+                Number(inscricao.idCorrida) ===
+                Number(this.idCorrida)
+            );
+
+          console.log(
+            'Inscrições desta corrida:',
+            inscricoesCorrida
+          );
+
+          // Agora procura os atletas correspondentes
+          // às inscrições encontradas.
           this.atletasInscritos =
             this.listaAtletas.filter(
               atleta =>
                 inscricoesCorrida.some(
                   inscricao =>
-                    inscricao.idAtleta === atleta.id
+                    Number(inscricao.idAtleta) ===
+                    Number(atleta.id)
                 )
             );
 
+          console.log(
+            'Atletas inscritos:',
+            this.atletasInscritos
+          );
         },
 
         error: (erro: any) => {
@@ -151,23 +173,31 @@ export class InscricaoCorridaComponent implements OnInit {
           );
 
         }
-      });
 
+      });
   }
 
   carregarCorridas(): void {
-    this.CadCorridaService.listarCorridas()
+
+    this.CadCorridaService
+      .listarCorridas()
       .subscribe({
+
         next: (dados: CadCorrida[]) => {
           this.listaCorridas = dados;
         },
+
         error: (erro: any) => {
-          console.error('Erro ao carregar corridas:', erro);
+
+          console.error(
+            'Erro ao carregar corridas:',
+            erro
+          );
+
         }
+
       });
   }
-  
-
 
   inscrever(): void {
 
@@ -179,14 +209,14 @@ export class InscricaoCorridaComponent implements OnInit {
       return;
     }
 
-
     // Verifica se o atleta já está inscrito
+    // nessa corrida.
     const jaInscrito =
       this.atletasInscritos.some(
         atleta =>
-          atleta.id === this.atletaSelecionado
+          Number(atleta.id) ===
+          Number(this.atletaSelecionado)
       );
-
 
     if (jaInscrito) {
 
@@ -197,7 +227,6 @@ export class InscricaoCorridaComponent implements OnInit {
       return;
     }
 
-
     // Cria a nova inscrição
     const novaInscricao: Inscricao = {
 
@@ -207,8 +236,7 @@ export class InscricaoCorridaComponent implements OnInit {
 
     };
 
-
-    // Salva a inscrição
+    // Salva a inscrição na API
     this.inscricaoService
       .adicionarInscricao(novaInscricao)
       .subscribe({
@@ -219,12 +247,13 @@ export class InscricaoCorridaComponent implements OnInit {
             'Atleta inscrito com sucesso!'
           );
 
-          // Atualiza a lista
+          // Busca novamente as inscrições na API.
+          // Assim a tabela é atualizada com os dados
+          // realmente salvos.
           this.carregarInscritos();
 
           // Limpa o select
           this.atletaSelecionado = null;
-
         },
 
         error: (erro: any) => {
@@ -234,12 +263,14 @@ export class InscricaoCorridaComponent implements OnInit {
             erro
           );
 
+          alert(
+            'Erro ao realizar inscrição.'
+          );
+
         }
 
       });
-
   }
-
 
   excluirInscricao(
     idAtleta: number | undefined
@@ -247,13 +278,10 @@ export class InscricaoCorridaComponent implements OnInit {
 
     // Verifica se existe um ID
     if (idAtleta === undefined) {
-
       return;
-
     }
 
-
-    // Busca todas as inscrições
+    // Busca todas as inscrições na API
     this.inscricaoService
       .listarInscricoes()
       .subscribe({
@@ -261,16 +289,15 @@ export class InscricaoCorridaComponent implements OnInit {
         next: (inscricoes: Inscricao[]) => {
 
           // Procura a inscrição desse atleta
-          // nessa corrida
+          // dentro da corrida atual.
           const inscricao =
             inscricoes.find(
-
               item =>
-                item.idCorrida === this.idCorrida &&
-                item.idAtleta === idAtleta
-
+                Number(item.idCorrida) ===
+                  Number(this.idCorrida) &&
+                Number(item.idAtleta) ===
+                  Number(idAtleta)
             );
-
 
           // Se não encontrou a inscrição
           if (
@@ -278,12 +305,15 @@ export class InscricaoCorridaComponent implements OnInit {
             inscricao.id === undefined
           ) {
 
-            return;
+            console.error(
+              'Inscrição não encontrada.'
+            );
 
+            return;
           }
 
-
-          // Exclui a inscrição
+          // Exclui a inscrição usando o ID
+          // da própria inscrição.
           this.inscricaoService
             .excluirInscricao(inscricao.id)
             .subscribe({
@@ -294,9 +324,9 @@ export class InscricaoCorridaComponent implements OnInit {
                   'Inscrição removida.'
                 );
 
-                // Atualiza a lista
+                // Busca novamente na API
+                // para atualizar a tabela.
                 this.carregarInscritos();
-
               },
 
               error: (erro: any) => {
@@ -306,10 +336,13 @@ export class InscricaoCorridaComponent implements OnInit {
                   erro
                 );
 
+                alert(
+                  'Erro ao excluir inscrição.'
+                );
+
               }
 
             });
-
         },
 
         error: (erro: any) => {
@@ -322,7 +355,5 @@ export class InscricaoCorridaComponent implements OnInit {
         }
 
       });
-
   }
-
 }
