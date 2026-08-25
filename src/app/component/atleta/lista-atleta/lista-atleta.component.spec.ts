@@ -32,6 +32,8 @@ describe('AtletaService', () => {
     expect(resultado).toBe(50);
   });
 
+
+  // TESTA O SERVIÇO "listarAtletas()" QUE LER/LISTA OS ATLETAS
   it('Deve retornar as pessoas', () => {
 
     const atletasMock: Atleta[] = [
@@ -76,4 +78,24 @@ describe('AtletaService', () => {
     request.flush(atletasMock);
   });
 
+
+// TESTA O SERVIÇO "excluirAtleta()" QUE EXCLUI OS ATLETAS
+it('deve excluir um atleta', () => {
+
+  service.excluirAtleta(1).subscribe();
+
+
+  const request = httpMock.expectOne(
+    'https://6a834612cb486d2434039215.mockapi.io/Atleta/1'
+  );
+
+
+  expect(request.request.method).toBe('DELETE');
+
+
+  request.flush(null);
+
 });
+
+});
+
