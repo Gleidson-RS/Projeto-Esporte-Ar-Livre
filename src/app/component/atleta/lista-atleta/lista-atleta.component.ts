@@ -17,7 +17,8 @@ export class ListaAtletaComponent {
 
   constructor(
     private listaService: AtletaService,
-    private router: Router
+    private router: Router,
+    private atletaService: AtletaService
   ) {}
 
   ngOnInit() {
@@ -76,36 +77,10 @@ export class ListaAtletaComponent {
     ]);
   }
 
-  calcularIdade(dataNascimento: Date | null): number {
 
-    if (!dataNascimento) {
-      return 0;
-    }
-  
-    const hoje = new Date();
-    const nascimento = new Date(dataNascimento);
-  
-    let idade = hoje.getFullYear() - nascimento.getFullYear();
-  
-    const mesAtual = hoje.getMonth();
-    const mesNascimento = nascimento.getMonth();
-  
-    const diaAtual = hoje.getDate();
-    const diaNascimento = nascimento.getDate();
-  
-    if (
-      mesAtual < mesNascimento ||
-      (
-        mesAtual === mesNascimento &&
-        diaAtual < diaNascimento
-      )
-    ) {
-      idade--;
-    }
-  
-    return idade;
+  calcularIdade(dataNascimento: string): number {
+    return this.listaService.calcularIdade(dataNascimento);
   }
-
 
   
   }

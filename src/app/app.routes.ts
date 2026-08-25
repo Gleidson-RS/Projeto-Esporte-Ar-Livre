@@ -9,7 +9,7 @@ import { AtletaComponent } from './component/atleta/atleta-component/atleta.comp
 import { CadastroCorridasComponent } from './component/corrida/cadastro-corridas/cadastro-corridas.component';
 import { CorridasComponent } from './component/corrida/lista-corridas/corridas.component';
 
-import { InscricaoCorridaComponent } from './component/inscricao-corrida/inscricao-corrida.component';
+import { InscricaoCorridaComponent } from './component/inscricao/inscricao-corrida/inscricao-corrida.component';
 
 
 export const routes: Routes = [

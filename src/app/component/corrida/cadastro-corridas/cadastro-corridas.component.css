@@ -5,6 +5,7 @@
     padding: 25px;
     color: var(--primary);
     background-color: var(--bg);
+    border: 1px solid var(--border);
 }
 
 h2{

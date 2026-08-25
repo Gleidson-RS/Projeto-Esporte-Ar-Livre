@@ -18,7 +18,7 @@ export class AtletaComponent {
   // DECLARANDO ATRIBUTOS
   id = 0;
   nome = '';
-  dataNascimento: Date | null = null;
+  dataNascimento = '';
   cpf = 0;
   sexo = '';
   cep = 0;
@@ -82,7 +82,7 @@ export class AtletaComponent {
   limparDados() {
     this.id = 0;
     this.nome = '';
-    this.dataNascimento = null;
+    this.dataNascimento = '';
     this.cpf = 0;
     this.sexo = '';
     this.cep = 0;

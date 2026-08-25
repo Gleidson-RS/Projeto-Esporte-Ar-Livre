@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Atleta } from '../../models/atleta'; 
+import { Atleta } from '../../models/atleta';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -10,13 +10,11 @@ export class AtletaService {
 
   constructor(private http: HttpClient) { }
 
-  // Retorna a lista de TODOS os atletas (renomeado para o plural)
   listarAtletas(): Observable<Atleta[]> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta`;
     return this.http.get<Atleta[]>(urlApi);
   }
 
-  // MÉTODO ADICIONADO: Busca apenas UM atleta pelo ID
   listarAtleta(idAtleta: number): Observable<Atleta> {
     const urlApi = `https://6a834612cb486d2434039215.mockapi.io/Atleta/${idAtleta}`;
     return this.http.get<Atleta>(urlApi);
@@ -37,4 +35,28 @@ export class AtletaService {
     return this.http.put<Atleta>(urlApi, atleta);
   }
 
+  calcularIdade(dataNascimento: string): number {
+    const hoje = new Date();
+    const nascimento = new Date(dataNascimento);
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+    const mesAtual = hoje.getMonth();
+    const mesNascimento = nascimento.getMonth();
+
+    const diaAtual = hoje.getDate();
+    const diaNascimento = nascimento.getDate();
+
+    if (
+      mesAtual < mesNascimento ||
+      (
+        mesAtual === mesNascimento &&
+        diaAtual < diaNascimento
+      )
+    ) {
+      idade--;
+    }
+
+    return idade;
+  }
 }

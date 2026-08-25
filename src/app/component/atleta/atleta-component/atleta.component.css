@@ -7,6 +7,7 @@
     padding: 0px;
     color: var(--primary);
     background-color: var(--bg);
+    border: 1px solid var(--border);
 }
 
 h2{
