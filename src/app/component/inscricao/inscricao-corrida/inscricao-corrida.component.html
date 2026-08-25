@@ -1,0 +1,136 @@
+<section id="inscricao-corrida">
+
+    <div class="card-inscricao">
+
+        <h2>Inscrição na Corrida</h2>
+
+        <div class="linha-form">
+
+            <div class="campo">
+
+                <label for="atleta">
+                    Atleta Cadastrado
+                </label>
+
+                <select
+                    id="atleta"
+                    name="atleta"
+                    [(ngModel)]="atletaSelecionado">
+
+                    <option [ngValue]="null">
+                        Selecione o atleta
+                    </option>
+
+                    @for (atleta of listaAtletas; track atleta.id) {
+
+                        <option [ngValue]="atleta.id">
+                            {{ atleta.nome }} - {{ atleta.cpf }}
+                        </option>
+
+                    }
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="dados-corrida">
+
+            <div class="campo">
+
+                <label for="corrida">
+                    Corrida Escolhida
+                </label>
+
+                <select
+                    id="corrida"
+                    name="corrida"
+                    [(ngModel)]="idCorrida">
+
+                    @for (corrida of listaCorridas; track corrida.id) {
+
+                        <option [ngValue]="corrida.id">
+                            {{ corrida.descricao }} - {{ corrida.data }}
+                        </option>
+
+                    }
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="acoes-inscricao">
+
+            <button
+                type="button"
+                class="btn-inscrever"
+                (click)="inscrever()">
+
+                Inscrever
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card-inscritos">
+
+        <h2>Atletas Inscritos</h2>
+
+        <div class="tabela-inscritos">
+
+            <div class="cabecalho-tabela">
+
+                <span>ID</span>
+                <span>Nome</span>
+                <span>CPF</span>
+                <span>Ações</span>
+
+            </div>
+
+
+            @for (atleta of atletasInscritos; track atleta.id) {
+
+                <div class="linha-tabela">
+
+                    <span>
+                        {{ atleta.id }}
+                    </span>
+
+                    <span>
+                        {{ atleta.nome }}
+                    </span>
+
+                    <span>
+                        {{ atleta.cpf }}
+                    </span>
+
+                    <span>
+
+                        <button
+                            type="button"
+                            class="btn-excluir"
+                            (click)="excluirInscricao(atleta.id)">
+
+                            Excluir
+
+                        </button>
+
+                    </span>
+
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</section>
