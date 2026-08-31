@@ -1,3 +1,4 @@
+import { provideZoneChangeDetection, NgModule } from "@angular/core";
 import '@angular/compiler';
 import '@analogjs/vitest-angular/setup-zone';
 
@@ -7,7 +8,11 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+@NgModule({ providers: [ provideZoneChangeDetection() ] })
+export class ZoneChangeDetectionModule {}
+
+
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
+  [ZoneChangeDetectionModule, BrowserDynamicTestingModule],
   platformBrowserDynamicTesting()
 );
