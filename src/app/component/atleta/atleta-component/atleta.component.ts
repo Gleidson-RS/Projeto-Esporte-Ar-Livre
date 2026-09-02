@@ -20,11 +20,13 @@ export class AtletaComponent {
 
   id = 0;
   nome = '';
-  dataNascimento = '';
   cpf = 0;
+  dataNascimento = '';
+  peso = 0
+  altura = 0
   sexo = '';
   cep = 0;
-  ruaLogradouro = '';
+  rua_logradouro = '';
   bairro = '';
   cidade = '';
   uf = '';
@@ -74,11 +76,13 @@ export class AtletaComponent {
 
     console.log(this.id);
     console.log(this.nome);
-    console.log(this.dataNascimento);
     console.log(this.cpf);
+    console.log(this.dataNascimento);
+    console.log(this.peso)
+    console.log(this.altura)
     console.log(this.sexo);
     console.log(this.cep);
-    console.log(this.ruaLogradouro);
+    console.log(this.rua_logradouro);
     console.log(this.bairro);
     console.log(this.cidade);
     console.log(this.uf);
@@ -100,11 +104,13 @@ export class AtletaComponent {
 
           this.id = dadosAtleta.id;
           this.nome = dadosAtleta.nome;
-          this.dataNascimento = dadosAtleta.dataNascimento;
           this.cpf = dadosAtleta.cpf;
+          this.dataNascimento = dadosAtleta.dataNascimento;
+          this.peso = dadosAtleta.peso;
+          this.altura = dadosAtleta.altura
           this.sexo = dadosAtleta.sexo;
           this.cep = dadosAtleta.cep;
-          this.ruaLogradouro = dadosAtleta.ruaLogradouro;
+          this.rua_logradouro = dadosAtleta.rua_logradouro;
           this.bairro = dadosAtleta.bairro;
           this.cidade = dadosAtleta.cidade;
           this.uf = dadosAtleta.uf;
@@ -136,10 +142,12 @@ export class AtletaComponent {
         this.id,
         this.nome,
         this.dataNascimento,
+        this.peso,
+        this.altura,
         this.cpf,
         this.sexo,
         this.cep,
-        this.ruaLogradouro,
+        this.rua_logradouro,
         this.bairro,
         this.cidade,
         this.uf
@@ -226,11 +234,13 @@ export class AtletaComponent {
 
     this.id = atleta.id;
     this.nome = atleta.nome;
-    this.dataNascimento = atleta.dataNascimento;
     this.cpf = atleta.cpf;
+    this.dataNascimento = atleta.dataNascimento;
+    this.peso = atleta.peso
+    this.altura = atleta.altura
     this.sexo = atleta.sexo;
     this.cep = atleta.cep;
-    this.ruaLogradouro = atleta.ruaLogradouro;
+    this.rua_logradouro = atleta.rua_logradouro;
     this.bairro = atleta.bairro;
     this.cidade = atleta.cidade;
     this.uf = atleta.uf;

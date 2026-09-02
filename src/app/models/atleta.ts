@@ -2,12 +2,14 @@ export class Atleta{
     id: number = 0
     nome: string = ''
     cpf: number = 0
+    peso: number = 0
+    altura: number = 0
+    dataNascimento: string = ''
     sexo: string = ''
     cep: number = 0
-    ruaLogradouro: string = ''
+    rua_logradouro: string = ''
     bairro: string = ''
     cidade: string =''
     uf: string = ''
-    dataNascimento: string = ''
 
 }

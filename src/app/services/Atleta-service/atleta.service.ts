@@ -1,67 +1,138 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { Atleta } from '../../models/atleta';
 
 @Injectable({
-providedIn: 'root'
+  providedIn: 'root'
 })
 export class AtletaService {
 
-private apiUrl =
-'https://6a834612cb486d2434039215.mockapi.io/Atleta';
+  private readonly apiUrl =
+    'http://127.0.0.1:8000/pessoa/';
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-calcularIdade(dataNascimento: string): number {
-const hoje = new Date();
-const nascimento = new Date(dataNascimento);
+  // ==========================================
+  // LISTAR TODOS OS ATLETAS
+  // ==========================================
 
-let idade =
-  hoje.getFullYear() - nascimento.getFullYear();
+  listarAtletas(): Observable<Atleta[]> {
+    return this.http.get<Atleta[]>(this.apiUrl);
+  }
 
-const mes =
-  hoje.getMonth() - nascimento.getMonth();
+  // ==========================================
+  // BUSCAR UM ATLETA PELO ID
+  // ==========================================
 
-if (
-  mes < 0 ||
-  (mes === 0 && hoje.getDate() < nascimento.getDate())
-) {
-  idade--;
-}
+  listarAtleta(id: number): Observable<Atleta> {
+    return this.http.get<Atleta>( `${this.apiUrl}/${id}` );
+  }
 
-return idade;
+  // ==========================================
+  // CADASTRAR ATLETA
+  // ==========================================
 
+  adicionarAtleta(atleta: Atleta): Observable<Atleta> {
+    return this.http.post<Atleta>( this.apiUrl, atleta );
+  }
 
-}
+  // ==========================================
+  // ALTERAR ATLETA
+  // ==========================================
 
-listarAtletas(): Observable<Atleta[]> {
-return this.http.get<Atleta[]>(this.apiUrl);
-}
+  alterarAtleta(atleta: Atleta): Observable<Atleta> {
+    return this.http.put<Atleta>( `${this.apiUrl}/${atleta.id}`, atleta ); 
+  }
 
-listarAtleta(id: number): Observable<Atleta> {
-return this.http.get<Atleta>(
-this.apiUrl + '/' + id
-);
-}
+  // ==========================================
+  // EXCLUIR ATLETA
+  // ==========================================
 
-adicionarAtleta(atleta: Atleta): Observable<Atleta> {
-return this.http.post<Atleta>(
-this.apiUrl,
-atleta
-);
-}
+  excluirAtleta(id: number): Observable<void> { 
+    return this.http.delete<void>( `${this.apiUrl}/${id}` ); 
+  }
 
-alterarAtleta(atleta: Atleta): Observable<Atleta> {
-return this.http.put<Atleta>(
-this.apiUrl + '/' + atleta.id,
-atleta
-);
-}
+  // ==========================================
+  // CALCULAR IDADE
+  // ==========================================
 
-excluirAtleta(id: number): Observable<void> {
-return this.http.delete<void>(
-this.apiUrl + '/' + id
-);
-}
+  calcularIdade(dataNascimento: string): number {
+
+    const hoje = new Date();
+    const nascimento = new Date(dataNascimento);
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+    const mes = hoje.getMonth() - nascimento.getMonth();
+
+    if ( mes < 0 || ( mes === 0 && hoje.getDate() < nascimento.getDate()))
+    {
+      idade--;
+    }
+
+    return idade;
+  }
+
+  // ==========================================
+  // CRIAR OBJETO ATLETA
+  // ==========================================
+
+  criarAtleta(
+    id: number,
+    nome: string,
+    dataNascimento: string,
+    peso: number,
+    altura: number,
+    cpf: number,
+    sexo: string,
+    cep: number,
+    rua_logradouro: string,
+    bairro: string,
+    cidade: string,
+    uf: string
+  ): Atleta {
+
+    const atleta = new Atleta();
+
+    atleta.id = id;
+    atleta.nome = nome;
+    atleta.dataNascimento = dataNascimento;
+    atleta.peso = peso
+    atleta.altura = altura
+    atleta.cpf = cpf;
+    atleta.sexo = sexo;
+    atleta.cep = cep;
+    atleta.rua_logradouro = rua_logradouro;
+    atleta.bairro = bairro;
+    atleta.cidade = cidade;
+    atleta.uf = uf;
+
+    return atleta;
+  }
+
+  // ==========================================
+  // LIMPAR ATLETA
+  // ==========================================
+
+  limparAtleta(): Atleta {
+
+    const atleta = new Atleta();
+
+    atleta.id = 0;
+    atleta.nome = '';
+    atleta.dataNascimento = '';
+    atleta.peso = 0
+    atleta.altura = 0
+    atleta.cpf = 0;
+    atleta.sexo = '';
+    atleta.cep = 0;
+    atleta.rua_logradouro = '';
+    atleta.bairro = '';
+    atleta.cidade = '';
+    atleta.uf = '';
+
+    return atleta;
+  }
 }
