@@ -58,10 +58,10 @@ export class AtletaService {
   // CALCULAR IDADE
   // ==========================================
 
-  calcularIdade(dataNascimento: string): number {
+  calcularIdade(data_nascimento: string): number {
 
     const hoje = new Date();
-    const nascimento = new Date(dataNascimento);
+    const nascimento = new Date(data_nascimento);
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
 
@@ -82,7 +82,7 @@ export class AtletaService {
   criarAtleta(
     id: number,
     nome: string,
-    dataNascimento: string,
+    data_nascimento: string,
     peso: number,
     altura: number,
     cpf: number,
@@ -98,7 +98,7 @@ export class AtletaService {
 
     atleta.id = id;
     atleta.nome = nome;
-    atleta.dataNascimento = dataNascimento;
+    atleta.data_nascimento = data_nascimento;
     atleta.peso = peso
     atleta.altura = altura
     atleta.cpf = cpf;
@@ -122,7 +122,7 @@ export class AtletaService {
 
     atleta.id = 0;
     atleta.nome = '';
-    atleta.dataNascimento = '';
+    atleta.data_nascimento = '';
     atleta.peso = 0
     atleta.altura = 0
     atleta.cpf = 0;

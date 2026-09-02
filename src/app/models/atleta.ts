@@ -4,7 +4,7 @@ export class Atleta{
     cpf: number = 0
     peso: number = 0
     altura: number = 0
-    dataNascimento: string = ''
+    data_nascimento: string = ''
     sexo: string = ''
     cep: number = 0
     rua_logradouro: string = ''

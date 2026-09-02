@@ -59,7 +59,7 @@ it('deve retornar os atletas', () => {
 const atletasMock: Atleta[] = [
   {
     nome: 'Báiro',
-    cpf: 12345678900,
+    CPF: 12345678900,
     sexo: 'M',
     cep: 12345678,
     ruaLogradouro: 'Rua do Salve',
@@ -71,7 +71,7 @@ const atletasMock: Atleta[] = [
   },
   {
     nome: 'Ana maria',
-    cpf: 12345678911,
+    CPF: 12345678911,
     sexo: 'F',
     cep: 98765432,
     ruaLogradouro: 'Rua do Salve²',
@@ -106,7 +106,7 @@ it('deve retornar um atleta pelo ID', () => {
 
 const atletaMock: Atleta = {
   nome: 'Báiro',
-  cpf: 12345678900,
+  CPF: 12345678900,
   sexo: 'M',
   cep: 12345678,
   ruaLogradouro: 'Rua do Salve',
@@ -121,7 +121,7 @@ service.listarAtleta(1).subscribe(atleta => {
 
   expect(atleta.id).toBe(1);
   expect(atleta.nome).toBe('Báiro');
-  expect(atleta.cpf).toBe(12345678900);
+  expect(atleta.CPF).toBe(12345678900);
 
 });
 
@@ -140,7 +140,7 @@ it('deve adicionar um atleta', () => {
 
 const novoAtleta: Atleta = {
   nome: 'Carlos',
-  cpf: 11122233344,
+  CPF: 11122233344,
   sexo: 'M',
   cep: 49000000,
   ruaLogradouro: 'Rua Nova',
@@ -173,7 +173,7 @@ it('deve alterar um atleta', () => {
 
 const atletaAlterado: Atleta = {
   nome: 'Báiro Alterado',
-  cpf: 12345678900,
+  CPF: 12345678900,
   sexo: 'M',
   cep: 12345678,
   ruaLogradouro: 'Rua Alterada',

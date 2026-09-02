@@ -21,7 +21,7 @@ export class AtletaComponent {
   id = 0;
   nome = '';
   cpf = 0;
-  dataNascimento = '';
+  data_nascimento = '';
   peso = 0
   altura = 0
   sexo = '';
@@ -77,7 +77,7 @@ export class AtletaComponent {
     console.log(this.id);
     console.log(this.nome);
     console.log(this.cpf);
-    console.log(this.dataNascimento);
+    console.log(this.data_nascimento);
     console.log(this.peso)
     console.log(this.altura)
     console.log(this.sexo);
@@ -105,7 +105,7 @@ export class AtletaComponent {
           this.id = dadosAtleta.id;
           this.nome = dadosAtleta.nome;
           this.cpf = dadosAtleta.cpf;
-          this.dataNascimento = dadosAtleta.dataNascimento;
+          this.data_nascimento = dadosAtleta.data_nascimento;
           this.peso = dadosAtleta.peso;
           this.altura = dadosAtleta.altura
           this.sexo = dadosAtleta.sexo;
@@ -141,7 +141,7 @@ export class AtletaComponent {
       this.atletaService.criarAtleta(
         this.id,
         this.nome,
-        this.dataNascimento,
+        this.data_nascimento,
         this.peso,
         this.altura,
         this.cpf,
@@ -235,7 +235,7 @@ export class AtletaComponent {
     this.id = atleta.id;
     this.nome = atleta.nome;
     this.cpf = atleta.cpf;
-    this.dataNascimento = atleta.dataNascimento;
+    this.data_nascimento = atleta.data_nascimento;
     this.peso = atleta.peso
     this.altura = atleta.altura
     this.sexo = atleta.sexo;
