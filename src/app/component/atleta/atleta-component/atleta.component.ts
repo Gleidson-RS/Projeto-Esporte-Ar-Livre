@@ -18,18 +18,12 @@ export class AtletaComponent {
   // DADOS DO ATLETA
   // ==========================================
 
-  id = 0;
-  nome = '';
-  cpf = 0;
-  data_nascimento = '';
+  idpessoa = 0
+  nome = ''
+  datanascimento = ''
   peso = 0
   altura = 0
-  sexo = '';
-  cep = 0;
-  rua_logradouro = '';
-  bairro = '';
-  cidade = '';
-  uf = '';
+  sexo = ''
 
   // ==========================================
   // CONTROLE DA TELA
@@ -74,18 +68,13 @@ export class AtletaComponent {
 
   exibirDados() {
 
-    console.log(this.id);
-    console.log(this.nome);
-    console.log(this.cpf);
-    console.log(this.data_nascimento);
+    console.log(this.idpessoa)
+    console.log(this.nome)
+    console.log(this.datanascimento)
     console.log(this.peso)
     console.log(this.altura)
-    console.log(this.sexo);
-    console.log(this.cep);
-    console.log(this.rua_logradouro);
-    console.log(this.bairro);
-    console.log(this.cidade);
-    console.log(this.uf);
+    console.log(this.sexo)
+
   }
 
 
@@ -102,18 +91,13 @@ export class AtletaComponent {
       .subscribe({
         next: (dadosAtleta) => {
 
-          this.id = dadosAtleta.id;
+          this.idpessoa = dadosAtleta.idpessoa;
           this.nome = dadosAtleta.nome;
-          this.cpf = dadosAtleta.cpf;
-          this.data_nascimento = dadosAtleta.data_nascimento;
+          this.datanascimento = dadosAtleta.datanascimento;
           this.peso = dadosAtleta.peso;
           this.altura = dadosAtleta.altura
           this.sexo = dadosAtleta.sexo;
-          this.cep = dadosAtleta.cep;
-          this.rua_logradouro = dadosAtleta.rua_logradouro;
-          this.bairro = dadosAtleta.bairro;
-          this.cidade = dadosAtleta.cidade;
-          this.uf = dadosAtleta.uf;
+
         },
 
         error: (msgErro) => {
@@ -139,18 +123,13 @@ export class AtletaComponent {
 
     const atleta =
       this.atletaService.criarAtleta(
-        this.id,
+        this.idpessoa,
         this.nome,
-        this.data_nascimento,
+        this.datanascimento,
         this.peso,
         this.altura,
-        this.cpf,
         this.sexo,
-        this.cep,
-        this.rua_logradouro,
-        this.bairro,
-        this.cidade,
-        this.uf
+
       );
 
 
@@ -161,7 +140,7 @@ export class AtletaComponent {
     if (this.editar) {
 
 
-      atleta.id = this.idAtleta;
+      atleta.idpessoa = this.idAtleta;
 
       this.atletaService
         .alterarAtleta(atleta)
@@ -232,17 +211,12 @@ export class AtletaComponent {
     const atleta =
       this.atletaService.limparAtleta();
 
-    this.id = atleta.id;
+    this.idpessoa = atleta.idpessoa;
     this.nome = atleta.nome;
-    this.cpf = atleta.cpf;
-    this.data_nascimento = atleta.data_nascimento;
+    this.datanascimento = atleta.datanascimento;
     this.peso = atleta.peso
     this.altura = atleta.altura
     this.sexo = atleta.sexo;
-    this.cep = atleta.cep;
-    this.rua_logradouro = atleta.rua_logradouro;
-    this.bairro = atleta.bairro;
-    this.cidade = atleta.cidade;
-    this.uf = atleta.uf;
+
   }
 }

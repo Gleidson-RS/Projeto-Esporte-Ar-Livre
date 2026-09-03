@@ -2,25 +2,19 @@
 
   <h2>Lista Atletas</h2>
 
-  @for (elem of listaAtletas(); track elem.id) {
+  @for (elem of listaAtletas(); track elem.idpessoa) {
 
     <div class="atleta-item">
 
       <span class="span-dados-atleta">
 
-        ID do Usuario: {{ elem.id }}<br>
+        ID do Usuario: {{ elem.idpessoa }}<br>
 
         <ul>
           Nome do Usuario: {{ elem.nome }}
         </ul>
 
-        CPF: {{ elem.cpf }}<br>
-
-        Cidade: {{ elem.cidade }}<br>
-
-        Estado: {{ elem.uf }}<br>
-
-        Idade: {{ calcularIdade(elem.data_nascimento) }} anos<br>
+        Idade: {{ calcularIdade(elem.datanascimento) }} anos<br>
 
       </span>
 
@@ -34,7 +28,7 @@
 
         <button
           class="lnk-atleta lnk-excluir"
-          (click)="excluir(elem.id)"
+          (click)="excluir(elem.idpessoa)"
         >
           Excluir
         </button>

@@ -43,7 +43,7 @@ export class AtletaService {
   // ==========================================
 
   alterarAtleta(atleta: Atleta): Observable<Atleta> {
-    return this.http.put<Atleta>( `${this.apiUrl}/${atleta.id}`, atleta ); 
+    return this.http.put<Atleta>( `${this.apiUrl}/${atleta.idpessoa}`, atleta ); 
   }
 
   // ==========================================
@@ -80,34 +80,22 @@ export class AtletaService {
   // ==========================================
 
   criarAtleta(
-    id: number,
+    idpessoa: number,
     nome: string,
-    data_nascimento: string,
+    datanascimento: string,
     peso: number,
     altura: number,
-    cpf: number,
     sexo: string,
-    cep: number,
-    rua_logradouro: string,
-    bairro: string,
-    cidade: string,
-    uf: string
   ): Atleta {
 
     const atleta = new Atleta();
 
-    atleta.id = id;
+    atleta.idpessoa = idpessoa;
     atleta.nome = nome;
-    atleta.data_nascimento = data_nascimento;
+    atleta.datanascimento = datanascimento;
     atleta.peso = peso
     atleta.altura = altura
-    atleta.cpf = cpf;
     atleta.sexo = sexo;
-    atleta.cep = cep;
-    atleta.rua_logradouro = rua_logradouro;
-    atleta.bairro = bairro;
-    atleta.cidade = cidade;
-    atleta.uf = uf;
 
     return atleta;
   }
@@ -120,18 +108,12 @@ export class AtletaService {
 
     const atleta = new Atleta();
 
-    atleta.id = 0;
+    atleta.idpessoa = 0;
     atleta.nome = '';
-    atleta.data_nascimento = '';
+    atleta.datanascimento = '';
     atleta.peso = 0
     atleta.altura = 0
-    atleta.cpf = 0;
     atleta.sexo = '';
-    atleta.cep = 0;
-    atleta.rua_logradouro = '';
-    atleta.bairro = '';
-    atleta.cidade = '';
-    atleta.uf = '';
 
     return atleta;
   }

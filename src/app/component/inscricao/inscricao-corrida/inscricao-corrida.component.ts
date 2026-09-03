@@ -155,7 +155,7 @@ export class InscricaoCorridaComponent implements OnInit {
                 inscricoesCorrida.some(
                   inscricao =>
                     Number(inscricao.idAtleta) ===
-                    Number(atleta.id)
+                    Number(atleta.idpessoa)
                 )
             );
 
@@ -214,7 +214,7 @@ export class InscricaoCorridaComponent implements OnInit {
     const jaInscrito =
       this.atletasInscritos.some(
         atleta =>
-          Number(atleta.id) ===
+          Number(atleta.idpessoa) ===
           Number(this.atletaSelecionado)
       );
 
