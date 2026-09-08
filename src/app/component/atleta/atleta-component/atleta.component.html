@@ -8,12 +8,19 @@
         <input type="text" name="nome" id="nome" class="input01" maxlength="60" placeholder="Digite seu nome completo" [(ngModel)]="nome">
 
 
+        <label for="cpf"> CPF* </label>
+        <input type="number" name="cpf" id="cpf" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="cpf">
+
+
         <label for="dataNascimento"> Data* </label>
         <input type="date" name="dataNascimento" id="dataNascimento" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="datanascimento">
 
 
         <label for="peso">Peso*</label>
         <input type="number" name="peso" id="peso" class="input02" maxlength="14" placeholder="Digite seu peso" [(ngModel)]="peso">
+
+        <label for="altura">Altura*</label>
+        <input type="number" name="altura" id="altura" class="input02" maxlength="14" placeholder="Digite sua altura" [(ngModel)]="altura">
 
 
         <label for="sexo">Sexo</label>
@@ -24,6 +31,24 @@
         <input type="radio" name="sexo" id="sexo-n" class="radio01" required [(ngModel)]="sexo" value="N">
         Não declarar
 
+        <label for="cep"> CEP* </label>
+        <input type="number" name="cep" id="cep" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="cep">
+
+
+        <label for="rua_logradouro"> Rua/Logradouro* </label>
+        <input type="text" name="rua_logradouro" id="rua_logradouro" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="rua_logradouro">
+
+
+        <label for="bairro"> Bairro* </label>
+        <input type="text" name="bairro" id="bairro" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="bairro">
+
+
+        <label for="cidade"> Cidade* </label>
+        <input type="text" name="cidade" id="cidade" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="cidade">
+
+
+        <label for="uf"> Estado* </label>
+        <input type="text" name="uf" id="uf" class="input01" maxlength="60" placeholder="Digite seu data completo" [(ngModel)]="uf">
 
         <div id="div-btns">
 

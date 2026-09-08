@@ -1,119 +1,146 @@
 import { Injectable } from '@angular/core';
+import { Atleta } from '../../models/atleta';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { Atleta } from '../../models/atleta';
+import { ArrayType } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AtletaService {
 
-  private readonly apiUrl =
-    'http://127.0.0.1:8000/pessoa/';
+  private readonly apiUrl = 'http://127.0.0.1:8000/pessoa/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  // ==========================================
-  // LISTAR TODOS OS ATLETAS
-  // ==========================================
-
+  // Listar elementos
   listarAtletas(): Observable<Atleta[]> {
     return this.http.get<Atleta[]>(this.apiUrl);
   }
 
-  // ==========================================
-  // BUSCAR UM ATLETA PELO ID
-  // ==========================================
-
-  listarAtleta(id: number): Observable<Atleta> {
-    return this.http.get<Atleta>( `${this.apiUrl}/${id}` );
+  // Listar elemento
+  listarAtleta(idpessoa: number): Observable<Atleta> {
+    const urlApi = `${this.apiUrl}${idpessoa}`;
+    return this.http.get<Atleta>(urlApi);
   }
 
-  // ==========================================
-  // CADASTRAR ATLETA
-  // ==========================================
-
+  // Adicionar elemento
   adicionarAtleta(atleta: Atleta): Observable<Atleta> {
-    return this.http.post<Atleta>( this.apiUrl, atleta );
+    return this.http.post<Atleta>(this.apiUrl, atleta);
   }
 
-  // ==========================================
-  // ALTERAR ATLETA
-  // ==========================================
+  // Remover elemento
+  excluirAtleta(idpessoa: number): Observable<Atleta> {
+    const urlApi = `http://127.0.0.1:8000/pessoa/${idpessoa}`
+    return this.http.delete<Atleta>(urlApi);
+  }
 
+
+  // Alterar elemento
   alterarAtleta(atleta: Atleta): Observable<Atleta> {
-    return this.http.put<Atleta>( `${this.apiUrl}/${atleta.idpessoa}`, atleta ); 
+    const urlApi = `${this.apiUrl}${atleta.idpessoa}`;
+    return this.http.put<Atleta>(urlApi, atleta);
   }
+  
 
-  // ==========================================
-  // EXCLUIR ATLETA
-  // ==========================================
+  // Calcular idade
+  calcularIdade(datanascimento: string): number {
 
-  excluirAtleta(id: number): Observable<void> { 
-    return this.http.delete<void>( `${this.apiUrl}/${id}` ); 
-  }
-
-  // ==========================================
-  // CALCULAR IDADE
-  // ==========================================
-
-  calcularIdade(data_nascimento: string): number {
+    if (!datanascimento) return 0;
 
     const hoje = new Date();
-    const nascimento = new Date(data_nascimento);
+    const nascimento = new Date(datanascimento);
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
 
     const mes = hoje.getMonth() - nascimento.getMonth();
 
-    if ( mes < 0 || ( mes === 0 && hoje.getDate() < nascimento.getDate()))
-    {
+    if (
+      mes < 0 ||
+      (mes === 0 && hoje.getDate() < nascimento.getDate())
+    ) {
       idade--;
     }
 
     return idade;
   }
 
-  // ==========================================
-  // CRIAR OBJETO ATLETA
-  // ==========================================
+  // Calcular IMC
+  calcularIMC(peso: number, altura: number): number {
 
+    const IMC = peso / (altura * altura);
+
+    if (IMC < 18.5) {
+      
+
+    } else if (IMC >= 18.5 && IMC < 25) {
+
+
+    } else if (IMC >= 25 && IMC < 30) {
+      
+    } else if (IMC >= 30 && IMC < 35) {
+
+    } else if (IMC >= 35 && IMC < 40) {
+
+    } else if (IMC >= 40) {
+      
+    }
+
+    return IMC;
+  }
+
+  // Criar objeto atleta
   criarAtleta(
     idpessoa: number,
     nome: string,
+    cpf:number,
     datanascimento: string,
     peso: number,
     altura: number,
     sexo: string,
+    cep :number,
+    rua_logradouro: string,
+    bairro: string,
+    cidade : string,
+    uf: string
+
   ): Atleta {
 
     const atleta = new Atleta();
 
-    atleta.idpessoa = idpessoa;
-    atleta.nome = nome;
-    atleta.datanascimento = datanascimento;
+    atleta.idpessoa = idpessoa
+    atleta.nome = nome
+    atleta.cpf - cpf
+    atleta.datanascimento = datanascimento
     atleta.peso = peso
     atleta.altura = altura
-    atleta.sexo = sexo;
+    atleta.sexo = sexo
+    atleta.cep = cep
+    atleta.rua_logradouro = rua_logradouro
+    atleta.bairro = bairro
+    atleta.cidade = cidade
+    atleta.uf = uf
 
     return atleta;
   }
 
-  // ==========================================
-  // LIMPAR ATLETA
-  // ==========================================
-
+  // Limpar atleta
   limparAtleta(): Atleta {
 
-    const atleta = new Atleta();
+    const atleta = new Atleta()
 
-    atleta.idpessoa = 0;
-    atleta.nome = '';
-    atleta.datanascimento = '';
+    atleta.idpessoa = 0
+    atleta.nome = ''
+    atleta.cpf = 0
+    atleta.datanascimento = ''
     atleta.peso = 0
     atleta.altura = 0
-    atleta.sexo = '';
+    atleta.sexo = ''
+    atleta.cep = 0
+    atleta.rua_logradouro = ''
+    atleta.bairro = ''
+    atleta.cidade = ''
+    atleta.uf = ''
 
     return atleta;
   }

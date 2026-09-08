@@ -1,8 +1,5 @@
 import {
   Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet,
   ActivatedRoute
 } from '@angular/router';
 
@@ -15,12 +12,7 @@ import { CadCorrida } from '../../../models/cadastro-corridas';
 @Component({
   selector: 'app-cadastro-corridas',
   standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    FormsModule
-  ],
+  imports: [FormsModule],
   templateUrl: './cadastro-corridas.component.html',
   styleUrl: './cadastro-corridas.component.css'
 })

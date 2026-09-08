@@ -1,4 +1,4 @@
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { signal } from '@angular/core';
 @Component({
   selector: 'app-corridas',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet, FormsModule],
+  imports: [FormsModule],
   templateUrl: './corridas.component.html',
   styleUrl: './corridas.component.css'
 })

@@ -42,6 +42,7 @@ export class ListaAtletaComponent {
           console.log('Erro ao listar Atletas ', msgErro);
         }
       });
+
   }
 
   excluir(id: number) {
@@ -82,5 +83,11 @@ export class ListaAtletaComponent {
     return this.listaService.calcularIdade(dataNascimento);
   }
 
-  
+  calcularIMC(altura: number, peso: number): number{
+    return this.listaService.calcularIMC(peso, altura)
+
   }
+  }
+
+
+  

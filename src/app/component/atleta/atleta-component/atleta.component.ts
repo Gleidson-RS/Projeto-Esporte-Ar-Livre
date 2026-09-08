@@ -1,4 +1,4 @@
-import { Router, RouterLink, RouterLinkActive, RouterOutlet, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +8,7 @@ import { AtletaService } from '../../../services/Atleta-service/atleta.service';
 @Component({
   selector: 'app-atleta',
   standalone: true,
-  imports: [ RouterLink, RouterLinkActive, RouterOutlet, FormsModule],
+  imports: [FormsModule],
   templateUrl: './atleta.component.html',
   styleUrl: './atleta.component.css'
 })
@@ -18,12 +18,19 @@ export class AtletaComponent {
   // DADOS DO ATLETA
   // ==========================================
 
-  idpessoa = 0
-  nome = ''
-  datanascimento = ''
-  peso = 0
-  altura = 0
-  sexo = ''
+    idpessoa = 0
+    nome = ''
+    cpf = 0
+    datanascimento = ''
+    peso = 0
+    altura = 0
+    sexo = ''
+    cep = 0
+    rua_logradouro = ''
+    bairro = ''
+    cidade = '' 
+    uf = ''
+
 
   // ==========================================
   // CONTROLE DA TELA
@@ -70,10 +77,16 @@ export class AtletaComponent {
 
     console.log(this.idpessoa)
     console.log(this.nome)
+    console.log(this.cpf)
     console.log(this.datanascimento)
     console.log(this.peso)
     console.log(this.altura)
     console.log(this.sexo)
+    console.log(this.cep)
+    console.log(this.rua_logradouro)
+    console.log(this.bairro)
+    console.log(this.cidade)
+    console.log(this.uf)
 
   }
 
@@ -93,10 +106,16 @@ export class AtletaComponent {
 
           this.idpessoa = dadosAtleta.idpessoa;
           this.nome = dadosAtleta.nome;
+          this.cpf = dadosAtleta.cpf
           this.datanascimento = dadosAtleta.datanascimento;
           this.peso = dadosAtleta.peso;
           this.altura = dadosAtleta.altura
           this.sexo = dadosAtleta.sexo;
+          this.cep = dadosAtleta.cep;
+          this.rua_logradouro = dadosAtleta.rua_logradouro;
+          this.bairro = dadosAtleta.bairro
+          this.cidade = dadosAtleta.cidade
+          this.uf = dadosAtleta.uf;
 
         },
 
@@ -125,11 +144,16 @@ export class AtletaComponent {
       this.atletaService.criarAtleta(
         this.idpessoa,
         this.nome,
+        this.cpf,
         this.datanascimento,
         this.peso,
         this.altura,
         this.sexo,
-
+        this.cep,
+        this.rua_logradouro,
+        this.bairro,
+        this.cidade,
+        this.uf
       );
 
 
@@ -213,10 +237,15 @@ export class AtletaComponent {
 
     this.idpessoa = atleta.idpessoa;
     this.nome = atleta.nome;
+    this.cpf = atleta.cpf
     this.datanascimento = atleta.datanascimento;
     this.peso = atleta.peso
     this.altura = atleta.altura
     this.sexo = atleta.sexo;
-
+    this.cep = atleta.cep;
+    this.rua_logradouro = atleta.rua_logradouro;
+    this.bairro = atleta.bairro;
+    this.cidade = atleta.cidade
+    this.uf = atleta.uf
   }
 }
