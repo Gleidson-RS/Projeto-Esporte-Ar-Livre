@@ -2,13 +2,13 @@
 
   <h2>Lista Atletas</h2>
 
-  @for (elem of listaAtletas(); track elem.idpessoa) {
+  @for (elem of listaAtletas(); track elem.id) {
 
     <div class="atleta-item">
 
       <span class="span-dados-atleta">
 
-        ID do Usuario: {{ elem.idpessoa }}<br>
+        ID do Usuario: {{ elem.id }}<br>
 
         <ul>
           Nome do Usuario: {{ elem.nome }}
@@ -30,7 +30,7 @@
 
         <button
           class="lnk-atleta lnk-excluir"
-          (click)="excluir(elem.idpessoa)"
+          (click)="excluir(elem.id)"
         >
           Excluir
         </button>

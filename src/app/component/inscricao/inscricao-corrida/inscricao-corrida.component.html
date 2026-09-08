@@ -21,9 +21,9 @@
                         Selecione o atleta
                     </option>
 
-                    @for (atleta of listaAtletas; track atleta.idpessoa) {
+                    @for (atleta of listaAtletas; track atleta.id) {
 
-                        <option [ngValue]="atleta.idpessoa">
+                        <option [ngValue]="atleta.id">
                             {{ atleta.nome }}
                         </option>
 
@@ -95,12 +95,12 @@
             </div>
 
 
-            @for (atleta of atletasInscritos; track atleta.idpessoa) {
+            @for (atleta of atletasInscritos; track atleta.id) {
 
                 <div class="linha-tabela">
 
                     <span>
-                        {{ atleta.idpessoa }}
+                        {{ atleta.id }}
                     </span>
 
                     <span>
@@ -112,7 +112,7 @@
                         <button
                             type="button"
                             class="btn-excluir"
-                            (click)="excluirInscricao(atleta.idpessoa)">
+                            (click)="excluirInscricao(atleta.id)">
 
                             Excluir
 

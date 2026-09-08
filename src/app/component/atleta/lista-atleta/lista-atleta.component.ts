@@ -74,7 +74,7 @@ export class ListaAtletaComponent {
   carregaDadosAtletaForm(atleta: Atleta) {
     this.router.navigate([
       '/Cadastro-Atleta',
-      atleta.idpessoa
+      atleta.id
     ]);
   }
 

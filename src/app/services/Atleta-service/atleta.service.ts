@@ -18,8 +18,8 @@ export class AtletaService {
   }
 
   // Listar elemento
-  listarAtleta(idpessoa: number): Observable<Atleta> {
-    const urlApi = `${this.apiUrl}${idpessoa}`;
+  listarAtleta(id: number): Observable<Atleta> {
+    const urlApi = `${this.apiUrl}${id}`;
     return this.http.get<Atleta>(urlApi);
   }
 
@@ -29,15 +29,15 @@ export class AtletaService {
   }
 
   // Remover elemento
-  excluirAtleta(idpessoa: number): Observable<Atleta> {
-    const urlApi = `http://127.0.0.1:8000/pessoa/${idpessoa}`
+  excluirAtleta(id: number): Observable<Atleta> {
+    const urlApi = `http://127.0.0.1:8000/pessoa/${id}`
     return this.http.delete<Atleta>(urlApi);
   }
 
 
   // Alterar elemento
   alterarAtleta(atleta: Atleta): Observable<Atleta> {
-    const urlApi = `${this.apiUrl}${atleta.idpessoa}`;
+    const urlApi = `${this.apiUrl}${atleta.id}`;
     return this.http.put<Atleta>(urlApi, atleta);
   }
   
@@ -90,7 +90,7 @@ export class AtletaService {
 
   // Criar objeto atleta
   criarAtleta(
-    idpessoa: number,
+    id: number,
     nome: string,
     cpf:number,
     datanascimento: string,
@@ -107,7 +107,7 @@ export class AtletaService {
 
     const atleta = new Atleta();
 
-    atleta.idpessoa = idpessoa
+    atleta.id = id
     atleta.nome = nome
     atleta.cpf - cpf
     atleta.datanascimento = datanascimento
@@ -128,7 +128,7 @@ export class AtletaService {
 
     const atleta = new Atleta()
 
-    atleta.idpessoa = 0
+    atleta.id = 0
     atleta.nome = ''
     atleta.cpf = 0
     atleta.datanascimento = ''

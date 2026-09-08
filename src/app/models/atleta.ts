@@ -1,5 +1,5 @@
 export class Atleta{
-    idpessoa: number = 0
+    id: number = 0
     nome: string = ''
     cpf: number = 0
     datanascimento: string = ''

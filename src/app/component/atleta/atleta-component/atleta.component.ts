@@ -18,7 +18,7 @@ export class AtletaComponent {
   // DADOS DO ATLETA
   // ==========================================
 
-    idpessoa = 0
+    id = 0
     nome = ''
     cpf = 0
     datanascimento = ''
@@ -75,7 +75,7 @@ export class AtletaComponent {
 
   exibirDados() {
 
-    console.log(this.idpessoa)
+    console.log(this.id)
     console.log(this.nome)
     console.log(this.cpf)
     console.log(this.datanascimento)
@@ -104,7 +104,7 @@ export class AtletaComponent {
       .subscribe({
         next: (dadosAtleta) => {
 
-          this.idpessoa = dadosAtleta.idpessoa;
+          this.id = dadosAtleta.id;
           this.nome = dadosAtleta.nome;
           this.cpf = dadosAtleta.cpf
           this.datanascimento = dadosAtleta.datanascimento;
@@ -142,7 +142,7 @@ export class AtletaComponent {
 
     const atleta =
       this.atletaService.criarAtleta(
-        this.idpessoa,
+        this.id,
         this.nome,
         this.cpf,
         this.datanascimento,
@@ -164,7 +164,7 @@ export class AtletaComponent {
     if (this.editar) {
 
 
-      atleta.idpessoa = this.idAtleta;
+      atleta.id = this.idAtleta;
 
       this.atletaService
         .alterarAtleta(atleta)
@@ -235,7 +235,7 @@ export class AtletaComponent {
     const atleta =
       this.atletaService.limparAtleta();
 
-    this.idpessoa = atleta.idpessoa;
+    this.id = atleta.id;
     this.nome = atleta.nome;
     this.cpf = atleta.cpf
     this.datanascimento = atleta.datanascimento;
