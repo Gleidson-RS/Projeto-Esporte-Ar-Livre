@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { Atleta } from '../../../models/atleta';
-import { CadCorrida } from '../../../models/cadastro-corridas';
+import { Corrida } from '../../../models/cadastro-corridas';
 import { Inscricao } from '../../../models/inscricao';
 
 import { AtletaService } from '../../../services/Atleta-service/atleta.service';
@@ -20,10 +20,10 @@ import { InscricaoService } from '../../../services/Inscricao-service/inscricao.
 export class InscricaoCorridaComponent implements OnInit {
 
   // Corrida selecionada
-  cadCorrida?: CadCorrida;
+  Corrida?: Corrida;
 
   // Lista de todas as corridas
-  listaCorridas: CadCorrida[] = [];
+  listaCorridas: Corrida[] = [];
 
   // Lista de todos os atletas
   listaAtletas: Atleta[] = [];
@@ -69,8 +69,8 @@ export class InscricaoCorridaComponent implements OnInit {
       .listarCorrida(this.idCorrida)
       .subscribe({
 
-        next: (dados: CadCorrida) => {
-          this.cadCorrida = dados;
+        next: (dados: Corrida) => {
+          this.Corrida = dados;
         },
 
         error: (erro: any) => {
@@ -183,7 +183,7 @@ export class InscricaoCorridaComponent implements OnInit {
       .listarCorridas()
       .subscribe({
 
-        next: (dados: CadCorrida[]) => {
+        next: (dados: Corrida[]) => {
           this.listaCorridas = dados;
         },
 

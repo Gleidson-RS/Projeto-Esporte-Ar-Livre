@@ -1,11 +1,11 @@
-export class CadCorrida {
-  id = 0;
-  descricao = '';
-  data = '';
+export class Corrida {
+  idCorrida = 0
+  descricao_corrida = ''
+  data_corrida = ''
 
-  distancia5 = 5;
-  distancia10 = 10;
-  distancia25 = 25;
+  distancia_5km = false 
+  distancia_10km = false
+  distancia_25km = false
 
-  preco = 0;
+  preco = 0
 }

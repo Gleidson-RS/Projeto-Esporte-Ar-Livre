@@ -4,28 +4,28 @@
 
     <div class="lista-corridas">
 
-      @for(elem of listaCorrida(); track elem.descricao) {
+      @for(elem of listaCorrida(); track elem.descricao_corrida) {
 
         <div class="corrida-card">
 
-            <div class="corrida-header">  <h3> {{ elem.descricao }} </h3> </div>
+            <div class="corrida-header">  <h3> {{ elem.descricao_corrida }} </h3> </div>
 
             <div class="corrida-dados">
 
-                <p> <strong>ID da corrida:</strong> {{ elem.id }} </p>
+                <p> <strong>ID da corrida:</strong> {{ elem.idCorrida }} </p>
 
-                <p> <strong>Descrição:</strong> {{ elem.descricao }} </p>
+                <p> <strong>Descrição:</strong> {{ elem.descricao_corrida }} </p>
 
-                <p> <strong>Data da corrida:</strong> {{ elem.data }} </p>
+                <p> <strong>Data da corrida:</strong> {{ elem.data_corrida }} </p>
 
                 <p> <strong>Distâncias disponíveis:</strong> </p>
 
                 <ul>     
-                    <li>{{ elem.distancia5 }}km</li>
+                    <li>{{ elem.distancia_5km }}km</li>
 
-                    <li>{{ elem.distancia10 }}km</li>
+                    <li>{{ elem.distancia_10km }}km</li>
 
-                    <li>{{ elem.distancia25 }}km</li>
+                    <li>{{ elem.distancia_25km }}km</li>
 
                 </ul>
 
@@ -37,7 +37,7 @@
                 
                 <button type="button" class="btn-alterar" (click)="carregaDadosCorridaForm(elem)"> Alterar </button>
                 
-                <button type="button" class="btn-excluir" (click)="excluir(elem.id)"> Excluir </button>
+                <button type="button" class="btn-excluir" (click)="excluir(elem.idCorrida)"> Excluir </button>
 
                 <button type="button" class="btn-inscricao" (click)="redirecionar()" > Inscrever-se </button>
 

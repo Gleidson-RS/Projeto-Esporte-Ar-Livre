@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CadCorrida } from '../../../models/cadastro-corridas';
+import { Corrida } from '../../../models/cadastro-corridas';
 import { CadCorridaService } from '../../../services/Corrida-service/cad-corrida.service';
 
 
@@ -20,7 +20,7 @@ export class CorridasComponent implements OnInit {
   
   
   //listaAtletas: Atleta[] = []
-  listaCorrida = signal<CadCorrida[]>([]);
+  listaCorrida = signal<Corrida[]>([]);
   
   constructor(
     private listaService: CadCorridaService, 
@@ -37,7 +37,7 @@ export class CorridasComponent implements OnInit {
     .subscribe({
       next: (dadosCorrida) => {
         
-        this.listaCorrida.set([...dadosCorrida].sort((a, b) => a.descricao.localeCompare(b.descricao)));
+        this.listaCorrida.set([...dadosCorrida].sort((a, b) => a.descricao_corrida.localeCompare(b.descricao_corrida)));
       },
       error: (msgErro) => {
         console.log("Erro ao listar Corrida ", msgErro);
@@ -60,8 +60,8 @@ export class CorridasComponent implements OnInit {
     }
   }
   
-  carregaDadosCorridaForm(cadCorrida: CadCorrida) {
-    this.router.navigate(['/Cadastro-Corrida/', cadCorrida.id]);
+  carregaDadosCorridaForm(cadCorrida: Corrida) {
+    this.router.navigate(['/Cadastro-Corrida/', cadCorrida.idCorrida]);
   }
   
   redirecionar(){

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CadCorrida } from '../../models/cadastro-corridas';
+import { Corrida } from '../../models/cadastro-corridas';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -11,30 +11,30 @@ export class CadCorridaService {
   constructor(private http: HttpClient) { }
 
   // Retorna a lista de TODAS as corridas (renomeado para o plural)
-  listarCorridas(): Observable<CadCorrida[]> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida`;
-    return this.http.get<CadCorrida[]>(urlApi);
+  listarCorridas(): Observable<Corrida[]> {
+    const urlApi = `http://127.0.0.1:8000/corrida/`;
+    return this.http.get<Corrida[]>(urlApi);
   }
 
   // MÉTODO ADICIONADO: Busca apenas UMA corrida pelo ID
-  listarCorrida(idCadCorrida: number): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${idCadCorrida}`;
-    return this.http.get<CadCorrida>(urlApi);
+  listarCorrida(idcorrida: number): Observable<Corrida> {
+    const urlApi = `http://127.0.0.1:8000/corrida/${idcorrida}`;
+    return this.http.get<Corrida>(urlApi);
   }
 
-  adicionarCorrida(cadCorrida: CadCorrida): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida`;
-    return this.http.post<CadCorrida>(urlApi, cadCorrida);
+  adicionarCorrida(Corrida: Corrida): Observable<Corrida> {
+    const urlApi = `http://127.0.0.1:8000/corrida/`;
+    return this.http.post<Corrida>(urlApi, Corrida);
   }
 
-  excluirCorrida(idCadCorrida: number): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${idCadCorrida}`;
-    return this.http.delete<CadCorrida>(urlApi);
+  excluirCorrida(idcorrida: number): Observable<Corrida> {
+    const urlApi = `http://127.0.0.1:8000/corrida/${idcorrida}`;
+    return this.http.delete<Corrida>(urlApi);
   }
 
-  alterarCorrida(cadCorrida: CadCorrida): Observable<CadCorrida> {
-    const urlApi = `https://6a834612cb486d2434039215.mockapi.io/CadCorrida/${cadCorrida.id}`;
-    return this.http.put<CadCorrida>(urlApi, cadCorrida);
+  alterarCorrida(Corrida: Corrida): Observable<Corrida> {
+    const urlApi = `http://127.0.0.1:8000/corrida/${Corrida.idCorrida}`;
+    return this.http.put<Corrida>(urlApi, Corrida);
   }
 
 }

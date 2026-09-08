@@ -1,13 +1,9 @@
-import {
-  Router,
-  ActivatedRoute
-} from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { CadCorridaService } from '../../../services/Corrida-service/cad-corrida.service';
-import { CadCorrida } from '../../../models/cadastro-corridas';
+import { Corrida } from '../../../models/cadastro-corridas';
 
 @Component({
   selector: 'app-cadastro-corridas',
@@ -18,134 +14,91 @@ import { CadCorrida } from '../../../models/cadastro-corridas';
 })
 export class CadastroCorridasComponent {
 
-  // ==========================================
-  // ATRIBUTOS
-  // ==========================================
+  idcorrida = 0;
+  descricao_corrida = '';
+  data_corrida = '';
 
-  id = 0;
-  descricao = '';
-  data = '';
+  distancia_5km = false;
+  distancia_10km = false;
+  distancia_25km = false;
 
-  // Controlam se os checkboxes estão marcados
-  distancia5 = false;
-  distancia10 = false;
-  distancia25 = false;
   preco = 0;
 
-  idCorrida = 0;
+  id_Corrida = 0;
   editar = false;
-
-
-  // ==========================================
-  // CONSTRUTOR
-  // ==========================================
 
   constructor(
     private cadCorridaService: CadCorridaService,
-    private http: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router
-  ) { }
-
-
-  // ==========================================
-  // EXIBIR DADOS
-  // ==========================================
-
-  exibirDados() {
-
-    console.log(this.id);
-    console.log(this.descricao);
-    console.log(this.data);
-    console.log(this.preco);
-
-    console.log(
-      '5 km:',
-      this.distancia5
-    );
-
-    console.log(
-      '10 km:',
-      this.distancia10
-    );
-
-    console.log(
-      '25 km:',
-      this.distancia25
-    );
-  }
-
-
-  // ==========================================
-  // INICIALIZAÇÃO
-  // ==========================================
+  ) {}
 
   ngOnInit() {
 
-    // Pega o ID que veio pela URL
-    this.idCorrida = Number(
-      this.http.snapshot.paramMap.get('id')
+    this.id_Corrida = Number(
+      this.route.snapshot.paramMap.get('id')
     );
 
-    // Se existe um ID, estamos editando
-    if (this.idCorrida > 0) {
-
+    if (this.id_Corrida > 0) {
       this.editar = true;
-
-      this.carregaDados(this.idCorrida);
+      this.carregaDados(this.id_Corrida);
     }
   }
 
+  exibirDados() {
 
-  // ==========================================
-  // LIMPAR DADOS
-  // ==========================================
+    console.log('ID:', this.idcorrida);
+    console.log('Descrição:', this.descricao_corrida);
+    console.log('Data:', this.data_corrida);
+
+    console.log('5 km:', this.distancia_5km);
+    console.log('10 km:', this.distancia_10km);
+    console.log('25 km:', this.distancia_25km);
+
+    console.log('Preço:', this.preco);
+  }
 
   limparDados() {
 
-    this.id = 0;
+    this.idcorrida = 0;
+    this.descricao_corrida = '';
+    this.data_corrida = '';
 
-    this.descricao = '';
+    this.distancia_5km = false;
+    this.distancia_10km = false;
+    this.distancia_25km = false;
 
-    this.data = '';
-
-    this.preco;
-
-    // Desmarca os checkboxes
-    this.distancia5 = false;
-    this.distancia10 = false;
-    this.distancia25 = false;
+    this.preco = 0;
   }
 
-
-  // ==========================================
-  // CARREGAR DADOS DA CORRIDA
-  // ==========================================
-
-  carregaDados(idCorrida: number) {
+  carregaDados(id_Corrida: number) {
 
     this.cadCorridaService
-      .listarCorrida(idCorrida)
+      .listarCorrida(id_Corrida)
       .subscribe({
 
         next: (dadosCorrida) => {
 
-          this.id = dadosCorrida.id;
+          this.idcorrida = dadosCorrida.idCorrida;
 
-          this.descricao = dadosCorrida.descricao;
+          this.descricao_corrida =
+            dadosCorrida.descricao_corrida;
 
-          this.data = dadosCorrida.data;
+          this.data_corrida =
+            dadosCorrida.data_corrida;
 
-          this.preco = dadosCorrida.preco;
+          this.preco =
+            dadosCorrida.preco;
 
-          // Verifica quais distâncias foram cadastradas
-          this.distancia5 =
-            dadosCorrida.distancia5 === 5;
+          // Agora são BOOLEAN
+          this.distancia_5km =
+            dadosCorrida.distancia_5km;
 
-          this.distancia10 =
-            dadosCorrida.distancia10 === 10;
+          this.distancia_10km =
+            dadosCorrida.distancia_10km;
 
-          this.distancia25 =
-            dadosCorrida.distancia25 === 25;
+          this.distancia_25km =
+            dadosCorrida.distancia_25km;
         },
 
         error: (msgErro) => {
@@ -160,50 +113,42 @@ export class CadastroCorridasComponent {
       });
   }
 
-
-  // ==========================================
-  // SALVAR CORRIDA
-  // ==========================================
-
   salvar() {
 
     console.log(
       'cadastro-corridas.component.ts'
     );
 
+    const corrida: Corrida = {
 
-    // Cria o objeto da corrida
-    const corrida: CadCorrida = {
+      idCorrida: this.idcorrida,
 
-      id: this.id,
+      descricao_corrida:
+        this.descricao_corrida,
 
-      descricao: this.descricao,
+      data_corrida:
+        this.data_corrida,
 
-      data: this.data,
+      preco:
+        this.preco,
 
-      preco: this.preco,
+      // Envia TRUE ou FALSE
+      distancia_5km:
+        this.distancia_5km,
 
-      // Se estiver marcado, envia o valor.
-      // Se não estiver, envia 0.
-      distancia5:
-        this.distancia5 ? 5 : 0,
+      distancia_10km:
+        this.distancia_10km,
 
-      distancia10:
-        this.distancia10 ? 10 : 0,
-
-      distancia25:
-        this.distancia25 ? 25 : 0
+      distancia_25km:
+        this.distancia_25km
     };
 
-
-    // ==========================================
-    // MODO EDIÇÃO
-    // ==========================================
+    console.log('Objeto enviado:', corrida);
 
     if (this.editar) {
 
-      // Mantém o ID da corrida
-      corrida.id = this.idCorrida;
+      corrida.idCorrida =
+        this.id_Corrida;
 
       this.cadCorridaService
         .alterarCorrida(corrida)
@@ -217,8 +162,9 @@ export class CadastroCorridasComponent {
 
             console.log(resposta);
 
-            // Volta para a lista
-            this.router.navigate(['/Corridas']);
+            this.router.navigate([
+              '/Corridas'
+            ]);
           },
 
           error: (msgErro) => {
@@ -231,11 +177,6 @@ export class CadastroCorridasComponent {
           }
 
         });
-
-
-    // ==========================================
-    // MODO CADASTRO
-    // ==========================================
 
     } else {
 
@@ -251,11 +192,11 @@ export class CadastroCorridasComponent {
 
             console.log(resposta);
 
-            // Limpa os campos
             this.limparDados();
 
-            // Volta para a lista
-            this.router.navigate(['/Corridas']);
+            this.router.navigate([
+              '/Corridas'
+            ]);
           },
 
           error: (msgErro) => {

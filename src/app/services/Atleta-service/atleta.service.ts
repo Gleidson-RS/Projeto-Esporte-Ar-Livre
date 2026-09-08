@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Atleta } from '../../models/atleta';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ArrayType } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'

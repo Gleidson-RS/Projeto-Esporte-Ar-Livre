@@ -49,10 +49,10 @@
                     name="corrida"
                     [(ngModel)]="idCorrida">
 
-                    @for (corrida of listaCorridas; track corrida.id) {
+                    @for (corrida of listaCorridas; track corrida.idCorrida) {
 
-                        <option [ngValue]="corrida.id">
-                            {{ corrida.descricao }} - {{ corrida.data }}
+                        <option [ngValue]="corrida.idCorrida">
+                            {{ corrida.descricao_corrida }} - {{ corrida.data_corrida }}
                         </option>
 
                     }
